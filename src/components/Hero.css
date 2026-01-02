@@ -245,19 +245,18 @@
     }
 
     .badge-react {
-        top: -5px;
-        right: 10%;
+        top: -10px;
+        right: 5%;
     }
 
     .badge-fullstack {
-        bottom: 50%;
-        right: -20%;
-        transform: translateY(50%);
+        bottom: 20%;
+        right: -30%;
     }
 
     .badge-available {
-        bottom: -5px;
-        left: 10%;
+        bottom: -10px;
+        left: 5%;
     }
 
     .hero-cta {

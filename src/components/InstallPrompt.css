@@ -27,31 +27,40 @@
     background: var(--bg-card);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-outset);
-    max-width: 400px;
+    max-width: 360px;
 }
 
 .install-icon {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--text-primary);
-    color: white;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border-radius: var(--radius-md);
     flex-shrink: 0;
 }
 
+.install-text {
+    flex: 1;
+    min-width: 0;
+}
+
 .install-text h4 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-primary);
     margin-bottom: 2px;
+    white-space: nowrap;
 }
 
 .install-text p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .install-actions {
@@ -62,16 +71,17 @@
 }
 
 .install-btn {
-    padding: 8px 16px;
-    background: var(--accent-gold);
-    color: white;
+    padding: 8px 14px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border: none;
     border-radius: var(--radius-md);
     font-family: var(--font-primary);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition-fast);
+    white-space: nowrap;
 }
 
 .install-btn:hover {
@@ -97,11 +107,11 @@
     color: var(--text-primary);
 }
 
-/* Mobile-friendly styles */
+/* Mobile - compact horizontal layout */
 @media (max-width: 480px) {
     .install-prompt {
-        left: 12px;
-        right: 12px;
+        left: 10px;
+        right: 10px;
         bottom: 70px;
         transform: none;
     }
@@ -119,44 +129,36 @@
     }
 
     .install-content {
-        flex-direction: column;
-        text-align: center;
-        padding: var(--spacing-md);
         max-width: 100%;
-        gap: var(--spacing-sm);
+        padding: 10px 12px;
+        gap: 10px;
     }
 
     .install-icon {
-        width: 56px;
-        height: 56px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .install-icon svg {
+        width: 18px;
+        height: 18px;
     }
 
     .install-text h4 {
-        font-size: 1rem;
+        font-size: 0.85rem;
     }
 
     .install-text p {
-        font-size: 0.85rem;
-        line-height: 1.4;
-    }
-
-    .install-actions {
-        width: 100%;
-        flex-direction: row;
-        justify-content: center;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-xs);
+        font-size: 0.7rem;
     }
 
     .install-btn {
-        flex: 1;
-        padding: 12px 20px;
-        font-size: 0.9rem;
+        padding: 8px 12px;
+        font-size: 0.75rem;
     }
 
     .dismiss-btn {
-        width: 44px;
-        height: 44px;
-        background: var(--bg-secondary);
+        width: 28px;
+        height: 28px;
     }
 }
