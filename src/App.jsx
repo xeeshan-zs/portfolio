@@ -9,6 +9,7 @@ import Achievements from './components/Achievements';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import ThemeToggle from './components/ThemeToggle';
+import InstallPrompt from './components/InstallPrompt';
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -19,6 +20,14 @@ function App() {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  // Register service worker
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .catch(() => { });
+    }
+  }, []);
 
   return (
     <div className="app">
@@ -33,6 +42,7 @@ function App() {
       </main>
       <Navbar />
       <ThemeToggle theme={theme} setTheme={setTheme} />
+      <InstallPrompt />
       <footer className="footer">
         <div className="container">
           <p className="footer-text">

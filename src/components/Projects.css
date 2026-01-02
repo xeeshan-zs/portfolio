@@ -60,6 +60,25 @@
     color: var(--text-secondary);
 }
 
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--text-primary);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: var(--transition-fast);
+}
+
+.project-link:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
 .project-badge {
     position: absolute;
     top: var(--spacing-md);

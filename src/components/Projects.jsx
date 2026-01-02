@@ -1,38 +1,28 @@
+import { ExternalLink } from 'lucide-react';
 import './Projects.css';
 
 const Projects = () => {
     const projects = [
         {
-            title: "CosmoCon'25 Web Hackathon",
-            description: 'First place winning project at PUCIT CosmoCon December 2025 with team "Full Stack Four Eyes". Built a cutting-edge web application showcasing modern development practices.',
-            tags: ['Web Development', 'React', 'Full Stack', 'Team Project'],
-            icon: '🥇',
-            featured: true,
-            position: '1st Position',
-            link: '#'
+            title: 'Z Student Portal',
+            description: 'A student-built initiative to make campus life easier. Features include results management, homework tracking, timetables, and academic tools like grade calculators. Built to automate areas where students struggle the most.',
+            tags: ['React', 'Firebase', 'Web App'],
+            icon: '🎓',
+            link: 'https://portal-numl.web.app'
         },
         {
-            title: 'Surge UMT Hackathon',
-            description: 'Award-winning web development project that secured 3rd position at Surge UMT Hackathon with team "Full Stack Four Eyes". Built with modern web technologies focusing on user experience.',
-            tags: ['Web Development', 'HTML/CSS', 'JavaScript', 'Team Project'],
-            icon: '🏆',
-            featured: true,
-            position: '3rd Position',
-            link: '#'
+            title: 'RFID Attendance System',
+            description: 'Modern attendance tracking system using RFID technology. Streamlines the attendance process for educational institutions with real-time tracking and reporting.',
+            tags: ['JavaScript', 'RFID', 'Web App'],
+            icon: '📡',
+            link: 'https://rfid-numl.web.app'
         },
         {
-            title: 'Attendance Management System',
-            description: 'A comprehensive Java-based application for managing student and employee attendance with GUI interface, database integration, and reporting features.',
-            tags: ['Java', 'GUI Design', 'MySQL', 'OOP'],
-            icon: '📋',
-            link: '#'
-        },
-        {
-            title: 'Competitive Programming Solutions',
-            description: 'Collection of algorithmic solutions and data structure implementations from various competitive programming platforms and contests.',
-            tags: ['C++', 'Algorithms', 'Data Structures'],
-            icon: '🧩',
-            link: '#'
+            title: 'Library Management System',
+            description: 'Library management system built with Swing API in Java. Features book cataloging, member management, and borrowing/return tracking functionality.',
+            tags: ['Java', 'Swing', 'Desktop App'],
+            icon: '📚',
+            link: 'https://github.com/xeeshan-zs/Library-Management'
         }
     ];
 
@@ -42,10 +32,7 @@ const Projects = () => {
                 <h2 className="section-title">Featured Projects</h2>
                 <div className="projects-grid">
                     {projects.map((project, index) => (
-                        <article
-                            key={index}
-                            className={`project-card card ${project.featured ? 'project-featured' : ''}`}
-                        >
+                        <article key={index} className="project-card card">
                             <div className="project-icon-wrapper">
                                 <span className="project-icon">{project.icon}</span>
                             </div>
@@ -56,11 +43,16 @@ const Projects = () => {
                                     <span key={tagIndex} className="project-tag">{tag}</span>
                                 ))}
                             </div>
-                            {project.featured && (
-                                <div className={`project-badge ${project.position === '1st Position' ? 'badge-gold' : ''}`}>
-                                    <span className="badge-star">{project.position === '1st Position' ? '🥇' : '⭐'}</span>
-                                    {project.position}
-                                </div>
+                            {project.link && project.link !== '#' && (
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="project-link"
+                                >
+                                    <ExternalLink size={16} />
+                                    View Project
+                                </a>
                             )}
                         </article>
                     ))}
