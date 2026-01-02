@@ -40,8 +40,8 @@
 }
 
 .nav-item.active {
-    background: var(--text-primary);
-    color: white;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     box-shadow: var(--shadow-outset-sm);
 }
 

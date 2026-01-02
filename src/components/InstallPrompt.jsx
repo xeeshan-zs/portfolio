@@ -7,9 +7,24 @@ const InstallPrompt = () => {
     const [deferredPrompt, setDeferredPrompt] = useState(null);
 
     useEffect(() => {
-        // Check if already dismissed
-        const dismissed = localStorage.getItem('installPromptDismissed');
-        if (dismissed) return;
+        // Check visit count and timing
+        const today = new Date().toDateString();
+        const storedData = JSON.parse(localStorage.getItem('installPromptData') || '{}');
+
+        // Reset count if it's a new day
+        if (storedData.date !== today) {
+            storedData.date = today;
+            storedData.dismissCount = 0;
+            storedData.visitCount = 0;
+        }
+
+        storedData.visitCount = (storedData.visitCount || 0) + 1;
+        localStorage.setItem('installPromptData', JSON.stringify(storedData));
+
+        // Show if: dismissed less than 2 times today, OR visited more than 2 times
+        const shouldShow = storedData.dismissCount < 2 || storedData.visitCount > 2;
+
+        if (!shouldShow) return;
 
         const handler = (e) => {
             e.preventDefault();
@@ -19,11 +34,11 @@ const InstallPrompt = () => {
 
         window.addEventListener('beforeinstallprompt', handler);
 
-        // Show custom prompt for iOS
+        // Show custom prompt for iOS or after delay
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
-        if (isIOS && !isStandalone && !dismissed) {
+        if (!isStandalone) {
             setTimeout(() => setShowPrompt(true), 2000);
         }
 
@@ -43,7 +58,11 @@ const InstallPrompt = () => {
 
     const handleDismiss = () => {
         setShowPrompt(false);
-        localStorage.setItem('installPromptDismissed', 'true');
+
+        // Update dismiss count
+        const storedData = JSON.parse(localStorage.getItem('installPromptData') || '{}');
+        storedData.dismissCount = (storedData.dismissCount || 0) + 1;
+        localStorage.setItem('installPromptData', JSON.stringify(storedData));
     };
 
     if (!showPrompt) return null;
@@ -59,13 +78,13 @@ const InstallPrompt = () => {
                 <div className="install-text">
                     <h4>Install App</h4>
                     {isIOS ? (
-                        <p>Tap the share button and select "Add to Home Screen"</p>
+                        <p>Tap share button and "Add to Home Screen"</p>
                     ) : (
-                        <p>Install this portfolio for quick access anytime!</p>
+                        <p>Install this portfolio for quick access!</p>
                     )}
                 </div>
                 <div className="install-actions">
-                    {!isIOS && (
+                    {!isIOS && deferredPrompt && (
                         <button className="install-btn" onClick={handleInstall}>
                             Install
                         </button>

@@ -97,23 +97,66 @@
     color: var(--text-primary);
 }
 
+/* Mobile-friendly styles */
 @media (max-width: 480px) {
     .install-prompt {
-        left: var(--spacing-sm);
-        right: var(--spacing-sm);
-        transform: none;
+        left: 12px;
+        right: 12px;
         bottom: 70px;
+        transform: none;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .install-content {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-md);
         max-width: 100%;
+        gap: var(--spacing-sm);
+    }
+
+    .install-icon {
+        width: 56px;
+        height: 56px;
     }
 
     .install-text h4 {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 
     .install-text p {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .install-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xs);
+    }
+
+    .install-btn {
+        flex: 1;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .dismiss-btn {
+        width: 44px;
+        height: 44px;
+        background: var(--bg-secondary);
     }
 }

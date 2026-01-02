@@ -154,8 +154,8 @@
 .badge-fullstack {
     bottom: 30%;
     right: -15%;
-    background: var(--text-primary);
-    color: white;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     animation-delay: 0.5s;
 }
 
@@ -231,8 +231,8 @@
     }
 
     .hero-image-container {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
     }
 
     .placeholder-icon {
@@ -240,8 +240,24 @@
     }
 
     .floating-badge {
-        font-size: 0.75rem;
-        padding: 6px 10px;
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    .badge-react {
+        top: -5px;
+        right: 10%;
+    }
+
+    .badge-fullstack {
+        bottom: 50%;
+        right: -20%;
+        transform: translateY(50%);
+    }
+
+    .badge-available {
+        bottom: -5px;
+        left: 10%;
     }
 
     .hero-cta {

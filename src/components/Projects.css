@@ -66,8 +66,8 @@
     gap: 6px;
     margin-top: var(--spacing-md);
     padding: var(--spacing-xs) var(--spacing-sm);
-    background: var(--text-primary);
-    color: white;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
     border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 500;
