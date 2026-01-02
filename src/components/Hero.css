@@ -245,13 +245,15 @@
     }
 
     .badge-react {
-        top: -10px;
-        right: 5%;
+        top: 15%;
+        right: -20%;
     }
 
     .badge-fullstack {
-        bottom: 20%;
-        right: -30%;
+        top: auto;
+        bottom: 15%;
+        right: -25%;
+        left: auto;
     }
 
     .badge-available {
