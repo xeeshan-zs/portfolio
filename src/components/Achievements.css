@@ -1,0 +1,89 @@
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.achievement-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.achievement-highlight {
+    border: 2px solid var(--accent-gold);
+    position: relative;
+}
+
+.achievement-highlight::before {
+    content: '🥇';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    font-size: 1.5rem;
+}
+
+.achievement-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-inset);
+    color: var(--accent-gold);
+}
+
+.achievement-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.achievement-position {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--accent-gold);
+    color: white;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.achievement-org {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.achievement-team {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.achievement-date {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-xs);
+    display: block;
+}
+
+@media (max-width: 1024px) {
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-card {
+        padding: var(--spacing-lg);
+    }
+}

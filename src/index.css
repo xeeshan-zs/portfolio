@@ -1,46 +1,82 @@
-:root {
-  /* Color Palette - No gradients, flat colors */
-  --bg-primary: #e8e8ed;
-  --bg-secondary: #f0f0f5;
-  --bg-card: #e8e8ed;
-  
-  --text-primary: #1a3a52;
+/* Default: Warm Cream Theme */
+:root,
+[data-theme="cream"] {
+  --bg-primary: #f5ebe0;
+  --bg-secondary: #faf6f0;
+  --bg-card: #f5ebe0;
+
+  --text-primary: #1e3a5f;
   --text-secondary: #5a7a9a;
   --text-accent: #2d5a7b;
-  
+
   --accent-gold: #c9a75c;
   --accent-green: #4caf50;
   --accent-blue: #3b82f6;
-  
-  /* Neomorphic Shadows */
-  --shadow-outset: 8px 8px 16px #c8c8cd, -8px -8px 16px #ffffff;
-  --shadow-outset-sm: 4px 4px 8px #c8c8cd, -4px -4px 8px #ffffff;
-  --shadow-inset: inset 4px 4px 8px #c8c8cd, inset -4px -4px 8px #ffffff;
-  --shadow-hover: 12px 12px 24px #c8c8cd, -12px -12px 24px #ffffff;
-  
-  /* Typography */
+
+  --shadow-outset: 8px 8px 16px #d9d0c5, -8px -8px 16px #ffffff;
+  --shadow-outset-sm: 4px 4px 8px #d9d0c5, -4px -4px 8px #ffffff;
+  --shadow-inset: inset 4px 4px 8px #d9d0c5, inset -4px -4px 8px #ffffff;
+  --shadow-hover: 12px 12px 24px #d9d0c5, -12px -12px 24px #ffffff;
+
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Outfit', 'Inter', sans-serif;
-  
-  /* Spacing */
+
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
-  
-  /* Border Radius */
+
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-xl: 32px;
   --radius-full: 50%;
-  
-  /* Transitions */
+
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #e8e8ed;
+  --bg-secondary: #f0f0f5;
+  --bg-card: #e8e8ed;
+  --shadow-outset: 8px 8px 16px #c8c8cd, -8px -8px 16px #ffffff;
+  --shadow-outset-sm: 4px 4px 8px #c8c8cd, -4px -4px 8px #ffffff;
+  --shadow-inset: inset 4px 4px 8px #c8c8cd, inset -4px -4px 8px #ffffff;
+  --shadow-hover: 12px 12px 24px #c8c8cd, -12px -12px 24px #ffffff;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16162a;
+  --bg-card: #1a1a2e;
+  --text-primary: #e8e8ed;
+  --text-secondary: #a0a0b0;
+  --accent-gold: #e0b85c;
+  --shadow-outset: 8px 8px 16px #121225, -8px -8px 16px #222237;
+  --shadow-outset-sm: 4px 4px 8px #121225, -4px -4px 8px #222237;
+  --shadow-inset: inset 4px 4px 8px #121225, inset -4px -4px 8px #222237;
+  --shadow-hover: 12px 12px 24px #121225, -12px -12px 24px #222237;
+}
+
+/* Ocean Theme */
+[data-theme="ocean"] {
+  --bg-primary: #0a192f;
+  --bg-secondary: #0d1d35;
+  --bg-card: #0a192f;
+  --text-primary: #ccd6f6;
+  --text-secondary: #8892b0;
+  --accent-gold: #64ffda;
+  --accent-blue: #64ffda;
+  --shadow-outset: 8px 8px 16px #071220, -8px -8px 16px #0d203e;
+  --shadow-outset-sm: 4px 4px 8px #071220, -4px -4px 8px #0d203e;
+  --shadow-inset: inset 4px 4px 8px #071220, inset -4px -4px 8px #0d203e;
+  --shadow-hover: 12px 12px 24px #071220, -12px -12px 24px #0d203e;
 }
 
 * {
@@ -67,15 +103,28 @@ body {
 }
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.2;
 }
 
-h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
-h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
 
 p {
   color: var(--text-secondary);
@@ -195,18 +244,36 @@ a {
   gap: var(--spacing-lg);
 }
 
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
 
 @media (max-width: 1024px) {
-  .grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
   .section {
     padding: var(--spacing-xl) 0;
     min-height: auto;
@@ -214,37 +281,81 @@ a {
 }
 
 /* Utility Classes */
-.text-center { text-align: center; }
-.text-accent { color: var(--accent-gold); }
-.text-primary { color: var(--text-primary); }
-.text-secondary { color: var(--text-secondary); }
+.text-center {
+  text-align: center;
+}
 
-.flex { display: flex; }
-.flex-center { 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+.text-accent {
+  color: var(--accent-gold);
 }
-.flex-between { 
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
+
+.text-primary {
+  color: var(--text-primary);
 }
-.flex-col { flex-direction: column; }
-.flex-wrap { flex-wrap: wrap; }
-.gap-sm { gap: var(--spacing-sm); }
-.gap-md { gap: var(--spacing-md); }
-.gap-lg { gap: var(--spacing-lg); }
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
 
 /* Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-float {
