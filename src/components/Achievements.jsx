@@ -25,7 +25,7 @@ const Achievements = () => {
             title: 'Competitive Programming Co-Lead',
             position: 'Leadership',
             organization: 'HackForge - NUML',
-            date: 'Current',
+            date: '2024',
             team: null,
             icon: Award,
             highlight: false
