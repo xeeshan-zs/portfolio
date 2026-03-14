@@ -3,6 +3,7 @@ import './Achievements.css';
 
 const Achievements = () => {
     const achievements = [
+        // Pinned: CosmoCon win
         {
             title: "CosmoCon'25 Web Hackathon",
             position: '1st Position',
@@ -11,6 +12,25 @@ const Achievements = () => {
             team: 'Full Stack Four Eyes',
             icon: Trophy,
             highlight: true
+        },
+        // Chronological order after pin
+        {
+            title: 'Tech Head',
+            position: 'Tech Head',
+            organization: 'ACM Society, NUML Lahore',
+            date: 'Current',
+            team: null,
+            icon: Award,
+            highlight: false
+        },
+        {
+            title: 'Competitive Programming Lead',
+            position: 'Lead',
+            organization: 'HackForge',
+            date: '2025',
+            team: null,
+            icon: Award,
+            highlight: false
         },
         {
             title: 'Surge UMT Hackathon',
@@ -23,8 +43,8 @@ const Achievements = () => {
         },
         {
             title: 'Competitive Programming Co-Lead',
-            position: 'Leadership',
-            organization: 'HackForge - NUML',
+            position: 'Co-Lead',
+            organization: 'HackForge',
             date: '2024',
             team: null,
             icon: Award,

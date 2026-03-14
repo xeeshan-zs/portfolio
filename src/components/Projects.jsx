@@ -23,6 +23,20 @@ const Projects = () => {
             tags: ['Java', 'Swing', 'Desktop App'],
             icon: '📚',
             link: 'https://github.com/xeeshan-zs/Library-Management'
+        },
+        {
+            title: 'Z-Nectar',
+            description: 'A hyperlocal grocery delivery app connecting customers with nearby stores. Features product browsing by category, cart management, and a seamless checkout experience.',
+            tags: ['Flutter', 'Firebase', 'Mobile App'],
+            icon: '🛒',
+            link: 'https://github.com/xeeshan-zs/z-nectar'
+        },
+        {
+            title: 'EduSync',
+            description: 'A Flutter-based hierarchical education management platform for institutions. Features student and teacher management, quiz systems, result tracking, and role-based dashboards.',
+            tags: ['Flutter', 'Firebase', 'Mobile App'],
+            icon: '🎓',
+            link: 'https://github.com/xeeshan-zs/EduSync'
         }
     ];
 
@@ -44,16 +58,30 @@ const Projects = () => {
                                 ))}
                             </div>
                             {project.link && project.link !== '#' && (
-                                <a
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="project-link"
-                                >
-                                    <ExternalLink size={16} />
-                                    View Project
-                                </a>
-                            )}
+    <div className="project-links">
+        <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link"
+        >
+            <ExternalLink size={16} />
+            View Project
+        </a>
+        {project.title === 'Z-Nectar' && (
+            <a
+                href="https://github.com/xeeshan-zs/z-nectar/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link secondary"
+                style={{ marginLeft: '8px' }}
+            >
+                <ExternalLink size={16} />
+                Download APK
+            </a>
+        )}
+    </div>
+)}
                         </article>
                     ))}
                 </div>

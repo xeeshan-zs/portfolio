@@ -1,0 +1,25 @@
+# Copilot Prompt Paste Area
+
+Paste your large prompt or instructions below. I will read from this file and execute your requests as needed.
+
+---
+
+Add two more project cards to the Featured Projects section, following the exact same card design, layout, and styling as the existing three cards.
+
+Project 1:
+- Name: Z-Nectar
+- Icon: use a grocery/shopping bag themed icon (match the existing neomorphic icon box style)
+- Description: A hyperlocal grocery delivery app connecting customers with nearby stores. Features product browsing by category, cart management, and a seamless checkout experience.
+- Tech stack tags: Flutter, Firebase, Mobile App
+- GitHub link: https://github.com/xeeshan-zs/z-nectar
+
+Project 2:
+- Name: EduSync
+- Icon: use a graduation/education themed icon (match the existing neomorphic icon box style)
+- Description: A Flutter-based hierarchical education management platform for institutions. Features student and teacher management, quiz systems, result tracking, and role-based dashboards.
+- Tech stack tags: Flutter, Firebase, Mobile App
+- GitHub link: https://github.com/xeeshan-zs/EduSync
+
+Keep all styling, card dimensions, button style, tag pill style, and font weights identical to the existing project cards. Do not change anything else on the page.
+
+- Add a secondary "Download APK" button linking to: https://github.com/xeeshan-zs/z-nectar/releases

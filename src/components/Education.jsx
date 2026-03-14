@@ -3,12 +3,14 @@ import './Education.css';
 const Education = () => {
     const educationItems = [
         {
-            institution: 'National University of Modern Languages (NUML)',
+            institution: 'National University of Modern Languages (NUML Lahore)',
             degree: 'Bachelor of Science in Computer Science',
             period: 'Current',
             description: 'Actively involved in competitive programming and hackathon communities.',
             achievements: [
-                'Competitive Programming Co-Lead at HackForge',
+                'Tech Head, ACM Society (Current)',
+                'Competitive Programming Co-Lead at HackForge (2024)',
+                'Compat Prog Lead of Hackforge in 2025',
                 'Active participant in university tech events'
             ],
             icon: '🎓'
