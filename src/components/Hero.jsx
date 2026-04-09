@@ -27,6 +27,10 @@ const Hero = () => {
                                 View Projects
                                 <span className="btn-arrow">→</span>
                             </a>
+                            <a href="/CV_Zeeshan_Sarfraz.pdf" download className="btn btn-primary">
+                                Download CV
+                                <span className="btn-arrow">↓</span>
+                            </a>
                             <a href="#contact" className="btn btn-outline">
                                 Get in Touch
                                 <span className="status-dot"></span>
