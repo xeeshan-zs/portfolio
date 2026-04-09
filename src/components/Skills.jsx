@@ -5,17 +5,27 @@ const Skills = () => {
         {
             title: 'Programming Languages',
             icon: '💻',
-            skills: ['C++', 'Java', 'C#', 'Python', 'JavaScript']
+            skills: ['C++', 'Java', 'C#', 'Python', 'JavaScript', 'Dart']
         },
         {
             title: 'Web Technologies',
             icon: '🌐',
-            skills: ['React', 'HTML/CSS', 'Firebase']
+            skills: ['React', 'Next.js', 'HTML/CSS', 'Firebase']
+        },
+        {
+            title: 'Backend & Databases',
+            icon: '🗄️',
+            skills: ['Node.js', 'Express.js', 'Supabase', 'SQL Server']
+        },
+        {
+            title: 'Mobile Development',
+            icon: '📱',
+            skills: ['Flutter', 'Dart']
         },
         {
             title: 'Tools & Technologies',
             icon: '🛠️',
-            skills: ['Git', 'Visual Studio', 'Eclipse', 'VS Code', 'MySQL']
+            skills: ['Git', 'VS Code', 'Cursor AI', 'Vite', 'npm', 'MySQL']
         },
         {
             title: 'Core Competencies',

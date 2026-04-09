@@ -9,7 +9,10 @@ const ThemeToggle = ({ theme, setTheme }) => {
         { id: 'cream', label: 'Cream', color: '#f5ebe0' },
         { id: 'light', label: 'Light', color: '#e8e8ed' },
         { id: 'dark', label: 'Dark', color: '#1a1a2e' },
-        { id: 'ocean', label: 'Ocean', color: '#0a192f' }
+        { id: 'ocean', label: 'Ocean', color: '#0a192f' },
+        { id: 'forest', label: 'Forest', color: '#1f3a2f' },
+        { id: 'sunset', label: 'Sunset', color: '#2a1f38' },
+        { id: 'midnight', label: 'Midnight', color: '#0f172a' }
     ];
 
     const selectTheme = (themeId) => {

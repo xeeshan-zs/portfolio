@@ -103,6 +103,7 @@
     position: relative;
     width: 350px;
     height: 350px;
+    touch-action: none;
 }
 
 .hero-image-wrapper {
@@ -142,7 +143,31 @@
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-primary);
-    animation: float 3s ease-in-out infinite;
+    animation: badgeFloat 3s ease-in-out infinite;
+    transform: translate(var(--drag-x, 0px), var(--drag-y, 0px));
+    user-select: none;
+    cursor: grab;
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    will-change: transform;
+}
+
+@keyframes badgeFloat {
+
+    0%,
+    100% {
+        transform: translate(var(--drag-x, 0px), var(--drag-y, 0px));
+    }
+
+    50% {
+        transform: translate(var(--drag-x, 0px), calc(var(--drag-y, 0px) - 10px));
+    }
+}
+
+.floating-badge:active,
+.floating-badge.is-dragging {
+    animation-play-state: paused;
+    cursor: grabbing;
+    box-shadow: var(--shadow-hover);
 }
 
 .badge-react {

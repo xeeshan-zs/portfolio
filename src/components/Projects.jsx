@@ -4,6 +4,20 @@ import './Projects.css';
 const Projects = () => {
     const projects = [
         {
+            title: 'ICCS Globalized',
+            description: 'Delivered a live production website for a real client, covering full-cycle development from requirements to deployment. Built responsive UI components in React with Firebase backend integration.',
+            tags: ['React', 'Firebase', 'Web App'],
+            icon: '🌐',
+            link: 'https://iccsglobalized.com'
+        },
+        {
+            title: 'Karigar',
+            description: 'A hyperlocal services marketplace built during a hackathon connecting local service providers with customers by geolocation. Features user authentication, real-time service listings, and request flows.',
+            tags: ['React', 'Firebase', 'Web App'],
+            icon: '🛠️',
+            link: 'https://karigarpu.web.app'
+        },
+        {
             title: 'Z Student Portal',
             description: 'A student-built initiative to make campus life easier. Features include results management, homework tracking, timetables, and academic tools like grade calculators. Built to automate areas where students struggle the most.',
             tags: ['React', 'Firebase', 'Web App'],
