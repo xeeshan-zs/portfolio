@@ -11,10 +11,11 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
+import EnergyParticles from './components/EnergyParticles';
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'cream';
+    return localStorage.getItem('theme') || 'saiyan';
   });
 
   useEffect(() => {
@@ -22,7 +23,6 @@ function App() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  // Register service worker
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js')
@@ -32,6 +32,7 @@ function App() {
 
   return (
     <div className="app">
+      <EnergyParticles />
       <Header />
       <main>
         <Hero />

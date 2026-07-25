@@ -1,5 +1,6 @@
 .site-footer {
     padding: var(--spacing-2xl) 0 7.5rem;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
 }
 
 .footer-top {
@@ -14,6 +15,9 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .footer-tagline {
@@ -25,6 +29,7 @@
 .footer-heading {
     font-size: 1rem;
     margin-bottom: var(--spacing-sm);
+    color: var(--accent-gold);
 }
 
 .footer-links {
@@ -36,15 +41,18 @@
 .footer-link {
     color: var(--text-secondary);
     font-weight: 500;
+    transition: var(--transition-fast);
 }
 
 .footer-link:hover {
-    color: var(--text-primary);
+    color: var(--accent-gold);
     transform: translateX(2px);
 }
 
 .footer-bottom {
     margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
     padding-bottom: var(--spacing-md);
     text-align: center;
 }

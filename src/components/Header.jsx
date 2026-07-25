@@ -5,6 +5,7 @@ const Header = () => {
         <header className="header">
             <div className="container flex-between">
                 <a href="#hero" className="logo">
+                    <span className="logo-icon">★</span>
                     Zeeshan<span className="text-accent">.</span>
                 </a>
                 <div className="header-social">

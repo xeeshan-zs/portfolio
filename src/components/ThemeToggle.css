@@ -10,9 +10,9 @@
     height: 48px;
     border: none;
     border-radius: var(--radius-full);
-    background: var(--bg-card);
-    color: var(--text-primary);
-    box-shadow: var(--shadow-outset);
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--accent-gold);
+    border: 1px solid rgba(255, 215, 0, 0.3);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -22,12 +22,12 @@
 
 .theme-toggle:hover {
     transform: scale(1.1);
-    box-shadow: var(--shadow-hover);
+    box-shadow: var(--aura-glow);
+    background: rgba(255, 215, 0, 0.2);
 }
 
 .theme-toggle:active {
     transform: scale(0.95);
-    box-shadow: var(--shadow-inset);
 }
 
 /* Theme Menu */
@@ -35,24 +35,18 @@
     position: absolute;
     bottom: 60px;
     right: 0;
-    background: var(--bg-card);
+    background: rgba(15, 15, 30, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-outset);
+    border: 1px solid rgba(255, 215, 0, 0.15);
     padding: var(--spacing-xs);
-    min-width: 140px;
+    min-width: 160px;
     animation: slideUp 0.2s ease;
 }
 
 @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .theme-option {
@@ -72,11 +66,11 @@
 }
 
 .theme-option:hover {
-    background: var(--bg-secondary);
+    background: rgba(255, 215, 0, 0.1);
 }
 
 .theme-option.active {
-    background: var(--bg-secondary);
+    background: rgba(255, 215, 0, 0.15);
     font-weight: 600;
 }
 
@@ -84,7 +78,7 @@
     width: 20px;
     height: 20px;
     border-radius: var(--radius-full);
-    border: 2px solid var(--text-secondary);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     flex-shrink: 0;
 }
 
@@ -94,7 +88,7 @@
 }
 
 .theme-check {
-    color: var(--accent-green);
+    color: var(--accent-gold);
 }
 
 @media (max-width: 768px) {

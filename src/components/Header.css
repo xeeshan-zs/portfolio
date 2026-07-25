@@ -5,7 +5,10 @@
     right: 0;
     z-index: 999;
     padding: var(--spacing-md) 0;
-    background: var(--bg-primary);
+    background: rgba(10, 10, 20, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
 }
 
 .logo {
@@ -14,6 +17,15 @@
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logo-icon {
+    color: var(--accent-gold);
+    font-size: 1rem;
+    text-shadow: 0 0 10px var(--accent-gold);
 }
 
 .header-social {
@@ -28,16 +40,18 @@
     width: 40px;
     height: 40px;
     border-radius: var(--radius-md);
-    background: var(--bg-card);
+    background: rgba(255, 215, 0, 0.08);
     color: var(--text-primary);
-    box-shadow: var(--shadow-outset-sm);
+    border: 1px solid rgba(255, 215, 0, 0.1);
     transition: var(--transition-normal);
 }
 
 .social-link:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-outset);
-    color: var(--accent-blue);
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    color: var(--accent-gold);
 }
 
 @media (max-width: 768px) {

@@ -8,49 +8,56 @@ const Projects = () => {
             description: 'Delivered a live production website for a real client, covering full-cycle development from requirements to deployment. Built responsive UI components in React with Firebase backend integration.',
             tags: ['React', 'Firebase', 'Web App'],
             icon: '🌐',
-            link: 'https://iccsglobalized.com'
+            link: 'https://iccsglobalized.com',
+            power: 9200
         },
         {
             title: 'Karigar',
             description: 'A hyperlocal services marketplace built during a hackathon connecting local service providers with customers by geolocation. Features user authentication, real-time service listings, and request flows.',
             tags: ['React', 'Firebase', 'Web App'],
             icon: '🛠️',
-            link: 'https://karigarpu.web.app'
+            link: 'https://karigarpu.web.app',
+            power: 8500
         },
         {
             title: 'Z Student Portal',
             description: 'A student-built initiative to make campus life easier. Features include results management, homework tracking, timetables, and academic tools like grade calculators. Built to automate areas where students struggle the most.',
             tags: ['React', 'Firebase', 'Web App'],
             icon: '🎓',
-            link: 'https://portal-numl.web.app'
+            link: 'https://portal-numl.web.app',
+            power: 8800
         },
         {
             title: 'RFID Attendance System',
             description: 'Modern attendance tracking system using RFID technology. Streamlines the attendance process for educational institutions with real-time tracking and reporting.',
             tags: ['JavaScript', 'RFID', 'Web App'],
             icon: '📡',
-            link: 'https://rfid-numl.web.app'
+            link: 'https://rfid-numl.web.app',
+            power: 7200
         },
         {
             title: 'Library Management System',
             description: 'Library management system built with Swing API in Java. Features book cataloging, member management, and borrowing/return tracking functionality.',
             tags: ['Java', 'Swing', 'Desktop App'],
             icon: '📚',
-            link: 'https://github.com/xeeshan-zs/Library-Management'
+            link: 'https://github.com/xeeshan-zs/Library-Management',
+            power: 6800
         },
         {
             title: 'Z-Nectar',
             description: 'A hyperlocal grocery delivery app connecting customers with nearby stores. Features product browsing by category, cart management, and a seamless checkout experience.',
             tags: ['Flutter', 'Firebase', 'Mobile App'],
             icon: '🛒',
-            link: 'https://github.com/xeeshan-zs/z-nectar'
+            link: 'https://github.com/xeeshan-zs/z-nectar',
+            power: 7800
         },
         {
             title: 'EduSync',
             description: 'A Flutter-based hierarchical education management platform for institutions. Features student and teacher management, quiz systems, result tracking, and role-based dashboards.',
             tags: ['Flutter', 'Firebase', 'Mobile App'],
             icon: '🎓',
-            link: 'https://github.com/xeeshan-zs/EduSync'
+            link: 'https://github.com/xeeshan-zs/EduSync',
+            power: 7500
         }
     ];
 
@@ -63,6 +70,10 @@ const Projects = () => {
                         <article key={index} className="project-card card">
                             <div className="project-icon-wrapper">
                                 <span className="project-icon">{project.icon}</span>
+                                <div className="project-power-badge">
+                                    <span className="power-icon">⚡</span>
+                                    <span className="power-num">{project.power.toLocaleString()}</span>
+                                </div>
                             </div>
                             <h3 className="project-title">{project.title}</h3>
                             <p className="project-description">{project.description}</p>
@@ -72,30 +83,29 @@ const Projects = () => {
                                 ))}
                             </div>
                             {project.link && project.link !== '#' && (
-    <div className="project-links">
-        <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-link"
-        >
-            <ExternalLink size={16} />
-            View Project
-        </a>
-        {project.title === 'Z-Nectar' && (
-            <a
-                href="https://github.com/xeeshan-zs/z-nectar/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link secondary"
-                style={{ marginLeft: '8px' }}
-            >
-                <ExternalLink size={16} />
-                Download APK
-            </a>
-        )}
-    </div>
-)}
+                                <div className="project-links">
+                                    <a
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="project-link"
+                                    >
+                                        <ExternalLink size={16} />
+                                        View Project
+                                    </a>
+                                    {project.title === 'Z-Nectar' && (
+                                        <a
+                                            href="https://github.com/xeeshan-zs/z-nectar/releases"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="project-link secondary"
+                                        >
+                                            <ExternalLink size={16} />
+                                            Download APK
+                                        </a>
+                                    )}
+                                </div>
+                            )}
                         </article>
                     ))}
                 </div>

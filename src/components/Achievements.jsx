@@ -3,7 +3,6 @@ import './Achievements.css';
 
 const Achievements = () => {
     const achievements = [
-        // Pinned: CosmoCon win
         {
             title: "CosmoCon'25 Web Hackathon",
             position: '1st Position',
@@ -11,9 +10,9 @@ const Achievements = () => {
             date: 'December 2025',
             team: 'Full Stack Four Eyes',
             icon: Trophy,
-            highlight: true
+            highlight: true,
+            power: 9999
         },
-        // Chronological order after pin
         {
             title: 'Tech Head',
             position: 'Tech Head',
@@ -21,7 +20,8 @@ const Achievements = () => {
             date: 'Current',
             team: null,
             icon: Award,
-            highlight: false
+            highlight: false,
+            power: 8500
         },
         {
             title: 'Competitive Programming Lead',
@@ -30,7 +30,8 @@ const Achievements = () => {
             date: '2025',
             team: null,
             icon: Award,
-            highlight: false
+            highlight: false,
+            power: 8200
         },
         {
             title: 'Surge UMT Hackathon',
@@ -39,7 +40,8 @@ const Achievements = () => {
             date: '2025',
             team: 'Full Stack Four Eyes',
             icon: Medal,
-            highlight: false
+            highlight: false,
+            power: 7800
         },
         {
             title: 'Competitive Programming Co-Lead',
@@ -48,7 +50,8 @@ const Achievements = () => {
             date: '2024',
             team: null,
             icon: Award,
-            highlight: false
+            highlight: false,
+            power: 7500
         }
     ];
 
@@ -74,7 +77,13 @@ const Achievements = () => {
                                     {item.team && (
                                         <p className="achievement-team">Team: {item.team}</p>
                                     )}
-                                    <span className="achievement-date">{item.date}</span>
+                                    <div className="achievement-footer">
+                                        <span className="achievement-date">{item.date}</span>
+                                        <span className="achievement-power">
+                                            <span className="power-pip" />
+                                            {item.power.toLocaleString()}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         );

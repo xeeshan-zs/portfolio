@@ -12,14 +12,18 @@
 .achievement-highlight {
     border: 2px solid var(--accent-gold);
     position: relative;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    background: linear-gradient(135deg, var(--bg-card), rgba(255, 215, 0, 0.05));
 }
 
 .achievement-highlight::before {
-    content: '🥇';
+    content: '★';
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 1.5rem;
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px var(--accent-gold);
 }
 
 .achievement-icon-wrapper {
@@ -29,10 +33,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-secondary);
+    background: rgba(255, 215, 0, 0.1);
     border-radius: var(--radius-full);
-    box-shadow: var(--shadow-inset);
+    border: 1px solid rgba(255, 215, 0, 0.2);
     color: var(--accent-gold);
+    transition: var(--transition-normal);
+}
+
+.achievement-card:hover .achievement-icon-wrapper {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.5);
 }
 
 .achievement-title {
@@ -40,16 +50,21 @@
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
+    transition: var(--transition-fast);
+}
+
+.achievement-card:hover .achievement-title {
+    color: var(--accent-gold);
 }
 
 .achievement-position {
     display: inline-block;
     padding: 4px 12px;
-    background: var(--accent-gold);
-    color: white;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+    color: var(--bg-primary);
     border-radius: var(--radius-md);
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: var(--spacing-sm);
 }
 
@@ -65,11 +80,38 @@
     font-style: italic;
 }
 
+.achievement-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-xs);
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
 .achievement-date {
     font-size: 0.75rem;
     color: var(--text-secondary);
-    margin-top: var(--spacing-xs);
-    display: block;
+}
+
+.achievement-power {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    font-family: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+.power-pip {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent-gold);
+    animation: energyPulse 2s ease-in-out infinite;
 }
 
 @media (max-width: 1024px) {

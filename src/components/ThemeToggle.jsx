@@ -6,13 +6,12 @@ const ThemeToggle = ({ theme, setTheme }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const themes = [
-        { id: 'cream', label: 'Cream', color: '#f5ebe0' },
-        { id: 'light', label: 'Light', color: '#e8e8ed' },
-        { id: 'dark', label: 'Dark', color: '#1a1a2e' },
-        { id: 'ocean', label: 'Ocean', color: '#0a192f' },
-        { id: 'forest', label: 'Forest', color: '#1f3a2f' },
-        { id: 'sunset', label: 'Sunset', color: '#2a1f38' },
-        { id: 'midnight', label: 'Midnight', color: '#0f172a' }
+        { id: 'saiyan', label: 'Super Saiyan', color: '#ffd700' },
+        { id: 'namek', label: 'Namek', color: '#64ffda' },
+        { id: 'ultra', label: 'Ultra Instinct', color: '#818cf8' },
+        { id: 'ssblue', label: 'SS Blue', color: '#00bfff' },
+        { id: 'ego', label: 'Ultra Ego', color: '#ff69b4' },
+        { id: 'fusion', label: 'Fusion', color: '#39ff14' }
     ];
 
     const selectTheme = (themeId) => {
@@ -32,7 +31,7 @@ const ThemeToggle = ({ theme, setTheme }) => {
                         >
                             <span
                                 className="theme-color"
-                                style={{ background: t.color }}
+                                style={{ background: t.color, boxShadow: `0 0 8px ${t.color}` }}
                             />
                             <span className="theme-label">{t.label}</span>
                             {theme === t.id && <Check size={16} className="theme-check" />}

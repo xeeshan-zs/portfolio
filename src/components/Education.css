@@ -21,9 +21,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-secondary);
+    background: rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-inset);
+    border: 1px solid rgba(255, 215, 0, 0.15);
 }
 
 .education-icon {
@@ -51,18 +51,18 @@
 
 .education-period {
     padding: 4px 12px;
-    background: var(--accent-gold);
-    color: white;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+    color: var(--bg-primary);
     border-radius: var(--radius-md);
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     white-space: nowrap;
 }
 
 .education-degree {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--accent-blue);
+    color: var(--accent-gold);
     margin-bottom: var(--spacing-sm);
 }
 
