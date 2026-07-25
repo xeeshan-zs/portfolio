@@ -3,13 +3,16 @@
     display: flex;
     gap: var(--spacing-xl);
     padding: var(--spacing-xl);
-    background: linear-gradient(135deg, var(--bg-card), rgba(255, 215, 0, 0.04));
-    border: 1px solid rgba(255, 215, 0, 0.15);
+    background: linear-gradient(135deg, rgba(17, 17, 34, 0.25), rgba(255, 215, 0, 0.02));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 215, 0, 0.1);
     border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-xl);
     position: relative;
     overflow: hidden;
     align-items: center;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 215, 0, 0.04);
 }
 
 .project-featured::before {
@@ -58,34 +61,7 @@
     100% { left: 110%; opacity: 0.3; }
 }
 
-/* ─── Power Bar ─────────────────────────────────────────────── */
-.project-power-bar-wrap {
-    width: 100%;
-    margin-top: 6px;
-}
-
-.project-power-bar-track {
-    height: 4px;
-    background: rgba(255, 215, 0, 0.08);
-    border-radius: 2px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 215, 0, 0.12);
-}
-
-.project-power-bar-fill {
-    height: 100%;
-    width: var(--power-pct, 0%);
-    background: linear-gradient(90deg, var(--accent-orange), var(--accent-gold));
-    border-radius: 2px;
-    transition: width 1s ease-out;
-}
-
-/* Animate bar on card hover */
-.project-card:hover .project-power-bar-fill,
-.project-featured:hover .project-power-bar-fill {
-    box-shadow: 0 0 8px var(--accent-gold);
-}
-
+/* ─── Featured Left ─────────────────────────────────────────── */
 .project-featured-left {
     display: flex;
     flex-direction: column;
@@ -104,19 +80,6 @@
     background: rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 215, 0, 0.2);
-}
-
-.project-featured-power {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: var(--accent-gold);
-    font-family: 'SF Mono', Consolas, monospace;
-    padding: 3px 8px;
-    background: rgba(255, 215, 0, 0.1);
-    border-radius: 10px;
 }
 
 .project-featured-content {
@@ -149,12 +112,15 @@
     flex-direction: column;
     gap: var(--spacing-sm);
     padding: var(--spacing-lg);
-    background: var(--bg-card);
+    background: rgba(17, 17, 34, 0.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-lg);
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 215, 0, 0.04);
 }
 
 .project-card::before {
@@ -170,9 +136,10 @@
 }
 
 .project-card:hover {
-    border-color: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.18);
     transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 215, 0, 0.08), inset 0 1px 0 rgba(255, 215, 0, 0.08);
+    background: rgba(17, 17, 34, 0.3);
 }
 
 .project-card:hover::before {
@@ -195,16 +162,6 @@
     background: rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-md);
     border: 1px solid rgba(255, 215, 0, 0.12);
-}
-
-.project-card-power {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    font-size: 0.6rem;
-    font-weight: 700;
-    color: var(--accent-gold);
-    font-family: 'SF Mono', Consolas, monospace;
 }
 
 .project-card:hover .project-card-title {
@@ -234,8 +191,10 @@
 
 .project-tag {
     padding: 3px 8px;
-    background: rgba(255, 215, 0, 0.06);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    background: rgba(17, 17, 34, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 215, 0, 0.06);
     border-radius: 6px;
     font-size: 0.7rem;
     font-weight: 500;

@@ -1,4 +1,4 @@
-import { ExternalLink, Zap } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import './Projects.css';
 
 const projects = [
@@ -8,7 +8,6 @@ const projects = [
         tags: ['React', 'Firebase', 'Web App'],
         icon: '🌐',
         link: 'https://iccsglobalized.com',
-        power: 9200,
         featured: true,
     },
     {
@@ -17,7 +16,6 @@ const projects = [
         tags: ['React', 'Firebase', 'Web App'],
         icon: '🛠️',
         link: 'https://karigarpu.web.app',
-        power: 8500,
     },
     {
         title: 'Z Student Portal',
@@ -25,7 +23,6 @@ const projects = [
         tags: ['React', 'Firebase', 'Web App'],
         icon: '🎓',
         link: 'https://portal-numl.web.app',
-        power: 8800,
     },
     {
         title: 'RFID Attendance',
@@ -33,7 +30,6 @@ const projects = [
         tags: ['JavaScript', 'RFID', 'Web App'],
         icon: '📡',
         link: 'https://rfid-numl.web.app',
-        power: 7200,
     },
     {
         title: 'Library Management',
@@ -41,7 +37,6 @@ const projects = [
         tags: ['Java', 'Swing', 'Desktop'],
         icon: '📚',
         link: 'https://github.com/xeeshan-zs/Library-Management',
-        power: 6800,
     },
     {
         title: 'Z-Nectar',
@@ -49,7 +44,6 @@ const projects = [
         tags: ['Flutter', 'Firebase', 'Mobile'],
         icon: '🛒',
         link: 'https://github.com/xeeshan-zs/z-nectar',
-        power: 7800,
     },
     {
         title: 'EduSync',
@@ -57,20 +51,8 @@ const projects = [
         tags: ['Flutter', 'Firebase', 'Mobile'],
         icon: '🎓',
         link: 'https://github.com/xeeshan-zs/EduSync',
-        power: 7500,
     },
 ];
-
-const PowerBar = ({ power }) => {
-    const pct = Math.min(100, (power / 10000) * 100);
-    return (
-        <div className="project-power-bar-wrap">
-            <div className="project-power-bar-track">
-                <div className="project-power-bar-fill" style={{ '--power-pct': `${pct}%` }} />
-            </div>
-        </div>
-    );
-};
 
 const Projects = () => {
     const featured = projects.find(p => p.featured);
@@ -87,11 +69,6 @@ const Projects = () => {
                         <div className="project-scan-line" />
                         <div className="project-featured-left">
                             <span className="project-featured-icon">{featured.icon}</span>
-                            <div className="project-featured-power">
-                                <Zap size={12} />
-                                <span>{featured.power.toLocaleString()}</span>
-                            </div>
-                            <PowerBar power={featured.power} />
                         </div>
                         <div className="project-featured-content">
                             <h3 className="project-featured-title">{featured.title}</h3>
@@ -118,12 +95,7 @@ const Projects = () => {
                             <div className="project-scan-line" />
                             <div className="project-card-top">
                                 <span className="project-card-icon">{project.icon}</span>
-                                <div className="project-card-power">
-                                    <Zap size={10} />
-                                    {project.power.toLocaleString()}
-                                </div>
                             </div>
-                            <PowerBar power={project.power} />
                             <h3 className="project-card-title">{project.title}</h3>
                             <p className="project-card-desc">{project.description}</p>
                             <div className="project-tags">

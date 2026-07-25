@@ -26,7 +26,9 @@
     align-items: center;
     gap: var(--spacing-md);
     padding: var(--spacing-md);
-    background: var(--bg-card);
+    background: rgba(17, 17, 34, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-md);
 }
@@ -89,8 +91,10 @@
     align-items: center;
     gap: 7px;
     padding: 8px 16px;
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    background: rgba(17, 17, 34, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 0, 0.08);
     border-radius: 24px;
     color: var(--text-secondary);
     font-size: 0.85rem;
@@ -141,8 +145,10 @@
     font-size: 0.8rem;
     color: var(--text-secondary);
     padding: 10px 14px;
-    background: rgba(255, 215, 0, 0.04);
-    border: 1px solid rgba(255, 215, 0, 0.08);
+    background: rgba(17, 17, 34, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.06);
     border-radius: 10px;
 }
 
@@ -157,7 +163,9 @@
     flex-direction: column;
     gap: var(--spacing-md);
     padding: var(--spacing-xl);
-    background: var(--bg-card);
+    background: rgba(17, 17, 34, 0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-lg);
     transition: var(--transition-normal);
@@ -179,7 +187,7 @@
     color: var(--text-secondary);
     pointer-events: none;
     transition: all 0.2s ease;
-    background: var(--bg-card);
+    background: rgba(17, 17, 34, 0.6);
     padding: 0 4px;
 }
 
@@ -196,8 +204,8 @@
 .form-input {
     width: 100%;
     padding: 14px 16px;
-    background: rgba(255, 215, 0, 0.03);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    background: rgba(17, 17, 34, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.08);
     border-radius: 10px;
     font-family: var(--font-primary);
     font-size: 0.9rem;
@@ -233,8 +241,10 @@
     flex-direction: column;
     gap: 4px;
     padding: 12px 16px;
-    background: rgba(255, 215, 0, 0.04);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+    background: rgba(17, 17, 34, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 0, 0.15);
     border-radius: 10px;
     position: relative;
     overflow: hidden;

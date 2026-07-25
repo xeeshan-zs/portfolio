@@ -5,8 +5,7 @@ const educationItems = [
         institution: 'NUML Lahore',
         full: 'National University of Modern Languages',
         degree: 'BS Computer Science',
-        period: 'Current — Semester 5',
-        gpa: '3.0+',
+        period: 'Current — Semester 6',
         highlights: [
             'Tech Head, ACM Society',
             'Competitive Programming Lead, HackForge',
@@ -19,7 +18,6 @@ const educationItems = [
         full: 'Army Public School',
         degree: 'Intermediate — Computer Science',
         period: 'Completed',
-        gpa: null,
         highlights: [
             'Strong CS foundation',
             'Algorithms & data structures intro',
@@ -50,12 +48,6 @@ const Education = () => {
                                     <span className="edu-period">{item.period}</span>
                                 </div>
                                 <p className="edu-degree">{item.degree}</p>
-                                {item.gpa && (
-                                    <div className="edu-gpa">
-                                        <span className="edu-gpa-label">CGPA</span>
-                                        <span className="edu-gpa-value">{item.gpa}</span>
-                                    </div>
-                                )}
                                 <ul className="edu-highlights">
                                     {item.highlights.map((h, i) => (
                                         <li key={i} className="edu-highlight">

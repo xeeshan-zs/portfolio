@@ -1,54 +1,99 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import profileImg from '../assets/profile.jpg';
 import './Hero.css';
 
 const CODE_LINES = [
-  { type: 'comment', text: '// power_level.ts' },
-  { type: 'keyword', text: 'const' },
-  { type: 'var', text: ' zeeshan ' },
-  { type: 'op', text: '= ' },
-  { type: 'bracket', text: '{' },
-  { type: 'prop', text: '  role' },
-  { type: 'op', text: ': ' },
-  { type: 'string', text: '"Full Stack Dev"' },
-  { type: 'op', text: ',' },
-  { type: 'prop', text: '  power' },
-  { type: 'op', text: ': ' },
-  { type: 'number', text: '9001' },
-  { type: 'op', text: ',' },
-  { type: 'prop', text: '  status' },
-  { type: 'op', text: ': ' },
-  { type: 'string', text: '"transforming..."' },
-  { type: 'op', text: ',' },
-  { type: 'bracket', text: '}' },
-  { type: 'op', text: ';' },
+  { text: '// Hero.tsx — portfolio intro', stage: 0 },
+  { text: '', stage: 0 },
+  { text: 'export default function Hero() {', stage: 0 },
+  { text: '  return (', stage: 1 },
+  { text: '    <section className="hero">', stage: 2 },
+  { text: '      <h1>Zeeshan Sarfraz</h1>', stage: 3 },
+  { text: '      <p>Full Stack Developer</p>', stage: 4 },
+  { text: '      <div className="stack">', stage: 5 },
+  { text: '        <span>React</span>', stage: 5 },
+  { text: '        <span>Firebase</span>', stage: 5 },
+  { text: '        <span>Flutter</span>', stage: 5 },
+  { text: '      </div>', stage: 5 },
+  { text: '      <a href="#projects">View Work</a>', stage: 6 },
+  { text: '    </section>', stage: 7 },
+  { text: '  );', stage: 7 },
+  { text: '}', stage: 7 },
 ];
 
+function highlightLine(text) {
+  if (!text) return <span>&nbsp;</span>;
+  if (text.trim().startsWith('//')) return <span className="code-comment">{text}</span>;
+
+  const keywords = ['import', 'export', 'default', 'function', 'return', 'const', 'from'];
+  const parts = [];
+  let result = text;
+
+  for (const kw of keywords) {
+    result = result.replace(new RegExp(`\\b(${kw})\\b`, 'g'), `<kw>$1</kw>`);
+  }
+  result = result.replace(/"([^"]*)"/g, '<str>"$1"</str>');
+  result = result.replace(/'([^']*)'/g, `<str>'$1'</str>`);
+  result = result.replace(/(function\s+)(\w+)/g, '$1<fn>$2</fn>');
+
+  const tokens = result.split(/(<kw>.*?<\/kw>|<str>.*?<\/str>|<fn>.*?<\/fn>)/g);
+
+  return (
+    <>
+      {tokens.map((token, i) => {
+        if (token.startsWith('<kw>')) return <span key={i} className="code-keyword">{token.replace(/<\/?kw>/g, '')}</span>;
+        if (token.startsWith('<str>')) return <span key={i} className="code-string">{token.replace(/<\/?str>/g, '')}</span>;
+        if (token.startsWith('<fn>')) return <span key={i} className="code-fn">{token.replace(/<\/?fn>/g, '')}</span>;
+        return <span key={i}>{token}</span>;
+      })}
+    </>
+  );
+}
+
 const Hero = () => {
-    const [typedText, setTypedText] = useState('');
+    const [typedCount, setTypedCount] = useState(0);
+    const [previewStage, setPreviewStage] = useState(0);
+    const [terminalVisible, setTerminalVisible] = useState(false);
     const [powerFill, setPowerFill] = useState(0);
     const [powerVisible, setPowerVisible] = useState(false);
-    const fullText = 'npx zeeshan --power-over-9000';
+    const terminalRef = useRef(null);
+    const terminalStarted = useRef(false);
     const containerRef = useRef(null);
     const dragState = useRef({ id: null, pointerId: null, startX: 0, startY: 0, initialX: 0, initialY: 0 });
-    const [offsets, setOffsets] = useState({ cpp: { x: 0, y: 0 }, fullStack: { x: 0, y: 0 }, available: { x: 0, y: 0 } });
+    const [offsets, setOffsets] = useState({ react: { x: 0, y: 0 }, fullStack: { x: 0, y: 0 }, firebase: { x: 0, y: 0 }, available: { x: 0, y: 0 } });
     const [draggingId, setDraggingId] = useState(null);
 
-    // Typing effect
     useEffect(() => {
-        let i = 0;
+        const el = terminalRef.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !terminalStarted.current) {
+                    terminalStarted.current = true;
+                    setTerminalVisible(true);
+                }
+            },
+            { threshold: 0.2 }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        if (!terminalVisible) return;
+        let lineIdx = 0;
         const interval = setInterval(() => {
-            if (i <= fullText.length) {
-                setTypedText(fullText.slice(0, i));
-                i++;
+            lineIdx++;
+            if (lineIdx <= CODE_LINES.length) {
+                setTypedCount(lineIdx);
+                setPreviewStage(CODE_LINES[lineIdx - 1].stage);
             } else {
                 clearInterval(interval);
             }
-        }, 60);
+        }, 200);
         return () => clearInterval(interval);
-    }, []);
+    }, [terminalVisible]);
 
-    // Ki power bar charge animation
     useEffect(() => {
         const timeout = setTimeout(() => {
             setPowerVisible(true);
@@ -65,14 +110,14 @@ const Hero = () => {
 
     const clamp = (val, min, max) => Math.min(max, Math.max(min, val));
 
-    const handlePointerDown = (id, e) => {
+    const handlePointerDown = useCallback((id, e) => {
         const cur = offsets[id];
         dragState.current = { id, pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, initialX: cur.x, initialY: cur.y };
         setDraggingId(id);
         e.currentTarget.setPointerCapture(e.pointerId);
-    };
+    }, [offsets]);
 
-    const handlePointerMove = (e) => {
+    const handlePointerMove = useCallback((e) => {
         const s = dragState.current;
         if (!s.id || s.pointerId !== e.pointerId) return;
         const rect = containerRef.current?.getBoundingClientRect();
@@ -81,13 +126,13 @@ const Hero = () => {
         const nx = clamp(s.initialX + (e.clientX - s.startX), -limX, limX);
         const ny = clamp(s.initialY + (e.clientY - s.startY), -limY, limY);
         setOffsets(prev => ({ ...prev, [s.id]: { x: nx, y: ny } }));
-    };
+    }, []);
 
-    const handlePointerUp = (e) => {
+    const handlePointerUp = useCallback((e) => {
         if (dragState.current.pointerId !== e.pointerId) return;
         dragState.current = { id: null, pointerId: null, startX: 0, startY: 0, initialX: 0, initialY: 0 };
         setDraggingId(null);
-    };
+    }, []);
 
     const badgeStyle = (id) => ({
         '--drag-x': `${offsets[id].x}px`,
@@ -102,22 +147,20 @@ const Hero = () => {
                     <div className="hero-text">
                         <p className="hero-greeting">
                             <span className="greeting-line"></span>
-                            POWER LEVEL OVER
-                            <span className="power-level">9000</span>
+                            Full Stack Developer
                         </p>
                         <h1 className="hero-name">
                             Zeeshan
                             <br />
                             <span className="name-highlight">Sarfraz</span>
                         </h1>
-                        <p className="hero-title">Full Stack Developer & Saiyan Coder</p>
+                        <p className="hero-title">Full Stack Developer</p>
                         <p className="hero-description">
                             Passionate about building exceptional digital experiences. Specializing in
                             competitive programming, web development, and software engineering. Turning complex
                             ideas into elegant, scalable solutions.
                         </p>
 
-                        {/* Ki Power Meter */}
                         <div className={`ki-meter ${powerVisible ? 'ki-meter-visible' : ''}`}>
                             <div className="ki-meter-label">
                                 <span className="ki-meter-text">⚡ KI LEVEL</span>
@@ -143,38 +186,6 @@ const Hero = () => {
                                 <span className="ki-orb"></span>
                             </a>
                         </div>
-                        <div className="hero-stats">
-                            <div className="stat-item">
-                                <span className="stat-value">7+</span>
-                                <span className="stat-label">Projects</span>
-                            </div>
-                            <div className="stat-item">
-                                <span className="stat-value">1st</span>
-                                <span className="stat-label">Hackathon</span>
-                            </div>
-                            <div className="stat-item">
-                                <span className="stat-value">3.0+</span>
-                                <span className="stat-label">CGPA</span>
-                            </div>
-                        </div>
-                        <div className="hero-terminal">
-                            <div className="terminal-bar">
-                                <span className="terminal-dot" />
-                                <span className="terminal-dot" />
-                                <span className="terminal-dot" />
-                                <span className="terminal-title">power_level.ts</span>
-                            </div>
-                            <div className="terminal-body">
-                                {CODE_LINES.map((token, i) => (
-                                    <span key={i} className={`code-${token.type}`}>{token.text}</span>
-                                ))}
-                                <div className="terminal-cursor-line">
-                                    <span className="terminal-prompt">$</span>
-                                    <span className="terminal-typed">{typedText}</span>
-                                    <span className="terminal-cursor">|</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div className="hero-visual">
                         <div
@@ -184,7 +195,6 @@ const Hero = () => {
                             onPointerUp={handlePointerUp}
                             onPointerCancel={handlePointerUp}
                         >
-                            {/* SSJ Lightning bolts */}
                             <div className="ssj-lightning ssj-lightning-1" />
                             <div className="ssj-lightning ssj-lightning-2" />
                             <div className="ssj-lightning ssj-lightning-3" />
@@ -197,32 +207,104 @@ const Hero = () => {
                                 <img src={profileImg} alt="Zeeshan Sarfraz" className="hero-image" />
                             </div>
                             <div
-                                className={`floating-badge badge-cpp ${draggingId === 'cpp' ? 'is-dragging' : ''}`}
-                                style={badgeStyle('cpp')}
-                                onPointerDown={(e) => handlePointerDown('cpp', e)}
-                                role="button" tabIndex={0} aria-label="Drag C++ badge"
+                                className={`floating-badge badge-react ${draggingId === 'react' ? 'is-dragging' : ''}`}
+                                style={badgeStyle('react')}
+                                onPointerDown={(e) => handlePointerDown('react', e)}
+                                role="button" tabIndex={0}
                             >
                                 <span className="badge-dot"></span>
-                                C++
+                                React
                             </div>
                             <div
                                 className={`floating-badge badge-fullstack ${draggingId === 'fullStack' ? 'is-dragging' : ''}`}
                                 style={badgeStyle('fullStack')}
                                 onPointerDown={(e) => handlePointerDown('fullStack', e)}
-                                role="button" tabIndex={0} aria-label="Drag Full Stack badge"
+                                role="button" tabIndex={0}
                             >
                                 <span className="badge-icon">⚡</span>
                                 Full Stack
                             </div>
                             <div
+                                className={`floating-badge badge-firebase ${draggingId === 'firebase' ? 'is-dragging' : ''}`}
+                                style={badgeStyle('firebase')}
+                                onPointerDown={(e) => handlePointerDown('firebase', e)}
+                                role="button" tabIndex={0}
+                            >
+                                <span className="badge-dot badge-dot-firebase"></span>
+                                Firebase
+                            </div>
+                            <div
                                 className={`floating-badge badge-available ${draggingId === 'available' ? 'is-dragging' : ''}`}
                                 style={badgeStyle('available')}
                                 onPointerDown={(e) => handlePointerDown('available', e)}
-                                role="button" tabIndex={0} aria-label="Drag Available badge"
+                                role="button" tabIndex={0}
                             >
                                 <span className="available-dot"></span>
                                 Available
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Two separate windows: Code + Browser — full width */}
+                <div className="hero-dual-window" ref={terminalRef}>
+                    <div className="code-window">
+                        <div className="window-bar">
+                            <span className="window-dot" />
+                            <span className="window-dot" />
+                            <span className="window-dot" />
+                            <span className="window-tab">Hero.tsx</span>
+                        </div>
+                        <div className="code-body">
+                            {CODE_LINES.slice(0, typedCount).map((line, i) => (
+                                <div key={i} className="code-line">
+                                    <span className="line-number">{i + 1}</span>
+                                    <span className="line-content">{highlightLine(line.text)}</span>
+                                </div>
+                            ))}
+                            <div className="code-line code-line-active">
+                                <span className="line-number">{typedCount + 1}</span>
+                                <span className="cursor-blink">|</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="browser-window">
+                        <div className="window-bar browser-bar">
+                            <span className="window-dot" />
+                            <span className="window-dot" />
+                            <span className="window-dot" />
+                            <div className="browser-url">
+                                <span className="browser-lock">🔒</span>
+                                localhost:3000
+                            </div>
+                        </div>
+                        <div className="browser-body">
+                            {previewStage >= 2 ? (
+                                <div className="browser-render">
+                                    {previewStage >= 3 && (
+                                        <h2 className="render-name preview-fade-in">Zeeshan Sarfraz</h2>
+                                    )}
+                                    {previewStage >= 4 && (
+                                        <p className="render-role preview-fade-in">Full Stack Developer</p>
+                                    )}
+                                    {previewStage >= 5 && (
+                                        <div className="render-stack preview-fade-in">
+                                            <span className="render-tag">React</span>
+                                            <span className="render-tag">Firebase</span>
+                                            <span className="render-tag">Flutter</span>
+                                        </div>
+                                    )}
+                                    {previewStage >= 6 && (
+                                        <a className="render-btn preview-fade-in" href="#projects">View Work →</a>
+                                    )}
+                                </div>
+                            ) : (
+                                <div className="browser-loading">
+                                    <div className="loading-spinner" />
+                                    <span>Loading...</span>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

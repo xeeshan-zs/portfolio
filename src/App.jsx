@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
 import EnergyParticles from './components/EnergyParticles';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -66,6 +67,7 @@ function App() {
   return (
     <div className="app">
       {scouterScan && <div className="scouter-scan-overlay" />}
+      <CustomCursor />
       <EnergyParticles />
       <Header />
       <main>

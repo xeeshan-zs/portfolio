@@ -1,5 +1,5 @@
 .education {
-    background: var(--bg-secondary);
+    background: transparent;
 }
 
 /* ─── Timeline ──────────────────────────────────────────────── */
@@ -47,13 +47,16 @@
 .edu-card {
     flex: 1;
     padding: var(--spacing-lg);
-    background: var(--bg-card);
+    background: rgba(17, 17, 34, 0.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-lg);
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 215, 0, 0.04);
 }
 
 .edu-card::before {
@@ -70,8 +73,9 @@
 
 .edu-card:hover {
     border-color: rgba(255, 215, 0, 0.18);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 0 10px rgba(255, 215, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 215, 0, 0.08), inset 0 1px 0 rgba(255, 215, 0, 0.08);
     transform: translateX(4px);
+    background: rgba(17, 17, 34, 0.3);
 }
 
 .edu-card:hover::before {
@@ -139,8 +143,10 @@
     align-items: center;
     gap: 8px;
     padding: 6px 14px;
-    background: rgba(255, 215, 0, 0.08);
-    border: 1px solid rgba(255, 215, 0, 0.15);
+    background: rgba(17, 17, 34, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 215, 0, 0.1);
     border-radius: 8px;
     margin-bottom: var(--spacing-md);
 }

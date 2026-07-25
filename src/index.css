@@ -295,10 +295,12 @@ a {
 
 /* Card Styles */
 .card {
-  background: var(--bg-card);
+  background: rgba(17, 17, 34, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
-  box-shadow: var(--shadow-outset);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 215, 0, 0.06);
   transition: var(--transition-normal);
   border: 1px solid rgba(255, 215, 0, 0.08);
   position: relative;
@@ -317,9 +319,10 @@ a {
 }
 
 .card:hover {
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 215, 0, 0.08), inset 0 1px 0 rgba(255, 215, 0, 0.1);
   transform: translateY(-4px);
-  border-color: rgba(255, 215, 0, 0.2);
+  border-color: rgba(255, 215, 0, 0.18);
+  background: rgba(17, 17, 34, 0.35);
 }
 
 .card:hover::after {
@@ -352,6 +355,7 @@ a {
   align-items: center;
   position: relative;
   scroll-margin-top: 100px;
+  background: transparent;
 }
 
 .section-title {
