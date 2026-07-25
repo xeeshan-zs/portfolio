@@ -46,6 +46,26 @@
   --ki-blue-glow: 0 0 15px rgba(0, 191, 255, 0.3), 0 0 30px rgba(0, 191, 255, 0.15);
 }
 
+/* Alternate theme: Super Saiyan God */
+[data-theme="ssgod"] {
+  --bg-primary: #0f0508;
+  --bg-secondary: #180810;
+  --bg-card: #1c0a14;
+  --text-primary: #ffe8e8;
+  --text-secondary: #c09090;
+  --accent-gold: #ff2244;
+  --accent-green: #ff4466;
+  --accent-blue: #ff3355;
+  --accent-orange: #ff1133;
+  --btn-primary-bg: #ff2244;
+  --btn-primary-text: #0f0508;
+  --shadow-outset: 0 0 20px rgba(255, 34, 68, 0.2), 0 0 40px rgba(255, 34, 68, 0.08);
+  --shadow-outset-sm: 0 0 10px rgba(255, 34, 68, 0.12);
+  --shadow-inset: inset 0 0 15px rgba(255, 34, 68, 0.06);
+  --shadow-hover: 0 0 30px rgba(255, 34, 68, 0.3), 0 0 60px rgba(255, 34, 68, 0.12);
+  --aura-glow: 0 0 20px rgba(255, 34, 68, 0.5), 0 0 40px rgba(255, 34, 68, 0.25);
+}
+
 /* Alternate theme: Namek */
 [data-theme="namek"] {
   --bg-primary: #0a1a0a;
@@ -86,21 +106,23 @@
 
 /* Alternate theme: Super Saiyan Blue */
 [data-theme="ssblue"] {
-  --bg-primary: #040a14;
-  --bg-secondary: #081220;
-  --bg-card: #0a1628;
-  --text-primary: #d0e8ff;
-  --text-secondary: #70a0d0;
-  --accent-gold: #00bfff;
-  --accent-green: #39ff14;
-  --accent-blue: #00bfff;
-  --btn-primary-bg: #00bfff;
-  --btn-primary-text: #040a14;
-  --shadow-outset: 0 0 20px rgba(0, 191, 255, 0.15);
-  --shadow-outset-sm: 0 0 10px rgba(0, 191, 255, 0.1);
-  --shadow-inset: inset 0 0 15px rgba(0, 191, 255, 0.05);
-  --shadow-hover: 0 0 30px rgba(0, 191, 255, 0.25);
-  --aura-glow: 0 0 20px rgba(0, 191, 255, 0.4);
+  --bg-primary: #030a16;
+  --bg-secondary: #061224;
+  --bg-card: #081a30;
+  --text-primary: #c8e4ff;
+  --text-secondary: #6090c0;
+  --text-accent: #00ccff;
+  --accent-gold: #00ccff;
+  --accent-green: #00ffcc;
+  --accent-blue: #00aaff;
+  --accent-orange: #0099ee;
+  --btn-primary-bg: #00ccff;
+  --btn-primary-text: #030a16;
+  --shadow-outset: 0 0 20px rgba(0, 204, 255, 0.2), 0 0 40px rgba(0, 170, 255, 0.08);
+  --shadow-outset-sm: 0 0 10px rgba(0, 204, 255, 0.12);
+  --shadow-inset: inset 0 0 15px rgba(0, 204, 255, 0.06);
+  --shadow-hover: 0 0 30px rgba(0, 204, 255, 0.3), 0 0 60px rgba(0, 170, 255, 0.12);
+  --aura-glow: 0 0 20px rgba(0, 204, 255, 0.5), 0 0 40px rgba(0, 170, 255, 0.25);
 }
 
 /* Alternate theme: Ultra Ego */

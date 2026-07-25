@@ -134,144 +134,287 @@
     letter-spacing: 1px;
 }
 
-/* Dragon Ball Visual */
+/* ─── Terminal ──────────────────────────────────────────────── */
+.hero-terminal {
+    margin-top: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    background: rgba(10, 10, 20, 0.9);
+    max-width: 420px;
+}
+
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255, 215, 0, 0.06);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.terminal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.3);
+}
+
+.terminal-dot:first-child { background: #ff5f57; }
+.terminal-dot:nth-child(2) { background: #febc2e; }
+.terminal-dot:nth-child(3) { background: #28c840; }
+
+.terminal-title {
+    margin-left: auto;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    font-family: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+.terminal-body {
+    padding: 12px 16px;
+    font-family: 'SF Mono', 'Cascadia Code', Consolas, monospace;
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.code-comment { color: #5a6a7a; }
+.code-keyword { color: var(--accent-gold); font-weight: 600; }
+.code-var { color: var(--text-primary); font-weight: 600; }
+.code-op { color: var(--text-secondary); }
+.code-bracket { color: var(--accent-gold); }
+.code-prop { color: var(--accent-blue); }
+.code-string { color: var(--accent-green); }
+.code-number { color: var(--accent-orange); font-weight: 700; }
+
+.terminal-cursor-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 215, 0, 0.08);
+}
+
+.terminal-prompt {
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+.terminal-typed {
+    color: var(--text-primary);
+}
+
+.terminal-cursor {
+    color: var(--accent-gold);
+    animation: cursorBlink 1s step-end infinite;
+    font-weight: 700;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ─── Profile Image ─────────────────────────────────────────── */
 .hero-visual {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 0;
+    margin-top: -60px;
+    margin-left: 40px;
 }
 
-.dragon-ball-container {
+.hero-image-container {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
+    touch-action: none;
+}
+
+.hero-image-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: #000000;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.1), 0 0 60px rgba(255, 107, 53, 0.06);
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 2px solid rgba(255, 215, 0, 0.15);
 }
 
-.dragon-ball-canvas {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    z-index: 2;
+.hero-image {
+    width: 100%;
+    height: 126%;
+    object-fit: contain;
+    object-position: center center;
+    transform: scale(0.85);
 }
 
-/* Aura Rings */
+/* ─── Aura Rings ────────────────────────────────────────────── */
 .aura-ring {
     position: absolute;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     pointer-events: none;
 }
 
 .aura-ring-1 {
-    width: 350px;
-    height: 350px;
-    border-color: rgba(255, 215, 0, 0.15);
+    width: 370px;
+    height: 370px;
+    top: -10px;
+    left: -10px;
+    border-color: rgba(255, 215, 0, 0.12);
     animation: auraPulse 3s ease-in-out infinite;
 }
 
 .aura-ring-2 {
-    width: 380px;
-    height: 380px;
-    border-color: rgba(255, 107, 53, 0.1);
+    width: 400px;
+    height: 400px;
+    top: -25px;
+    left: -25px;
+    border-color: rgba(255, 107, 53, 0.08);
     animation: auraPulse 3s ease-in-out infinite 0.5s;
 }
 
-/* Responsive */
+/* ─── Floating Badges ───────────────────────────────────────── */
+.floating-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-outset-sm);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    animation: badgeFloat 3s ease-in-out infinite;
+    transform: translate(var(--drag-x, 0px), var(--drag-y, 0px));
+    user-select: none;
+    cursor: grab;
+    transition: box-shadow 0.2s, transform 0.2s;
+    will-change: transform;
+    z-index: 5;
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translate(var(--drag-x, 0px), var(--drag-y, 0px)); }
+    50% { transform: translate(var(--drag-x, 0px), calc(var(--drag-y, 0px) - 10px)); }
+}
+
+.floating-badge:active,
+.floating-badge.is-dragging {
+    animation-play-state: paused;
+    cursor: grabbing;
+    box-shadow: var(--shadow-hover);
+}
+
+.badge-cpp {
+    top: 8%;
+    right: -5%;
+    animation-delay: 0s;
+}
+
+.badge-fullstack {
+    bottom: 32%;
+    right: -12%;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    font-weight: 600;
+    animation-delay: 0.5s;
+}
+
+.badge-available {
+    bottom: 10%;
+    left: -5%;
+    animation-delay: 1s;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+}
+
+.badge-icon {
+    font-size: 0.9rem;
+}
+
+.available-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-green);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* ─── Scroll Animations ─────────────────────────────────────── */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-animate.scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-animate.delay-1 { transition-delay: 0.1s; }
+.scroll-animate.delay-2 { transition-delay: 0.2s; }
+.scroll-animate.delay-3 { transition-delay: 0.3s; }
+.scroll-animate.delay-4 { transition-delay: 0.4s; }
+
+/* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 1024px) {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
     }
 
-    .hero-greeting {
-        justify-content: center;
-    }
+    .hero-greeting { justify-content: center; }
+    .hero-description { margin-left: auto; margin-right: auto; }
+    .hero-cta { justify-content: center; }
+    .hero-visual { order: -1; }
+    .hero-stats { justify-content: center; }
+    .hero-terminal { margin-left: auto; margin-right: auto; }
 
-    .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-    }
+    .hero-image-container { width: 280px; height: 280px; }
+    .aura-ring-1 { width: 300px; height: 300px; top: -10px; left: -10px; }
+    .aura-ring-2 { width: 320px; height: 320px; top: -20px; left: -20px; }
 
-    .hero-cta {
-        justify-content: center;
-    }
-
-    .hero-visual {
-        order: -1;
-    }
-
-    .hero-stats {
-        justify-content: center;
-    }
-
-    .dragon-ball-container {
-        width: 300px;
-        height: 300px;
-    }
-
-    .dragon-ball-canvas {
-        width: 240px;
-        height: 240px;
-    }
-
-    .aura-ring-1 {
-        width: 280px;
-        height: 280px;
-    }
-
-    .aura-ring-2 {
-        width: 300px;
-        height: 300px;
-    }
+    .badge-cpp { right: 0; }
+    .badge-fullstack { right: 0; }
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding-top: 80px;
-    }
+    .hero { padding-top: 80px; }
+    .hero-name { font-size: 2.5rem; }
+    .hero-image-container { width: 220px; height: 220px; }
+    .aura-ring-1 { width: 240px; height: 240px; }
+    .aura-ring-2 { width: 260px; height: 260px; }
+    .hero-stats { gap: var(--spacing-lg); }
+    .stat-value { font-size: 1.5rem; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .btn { width: 100%; justify-content: center; }
+    .hero-terminal { max-width: 100%; }
 
-    .hero-name {
-        font-size: 2.5rem;
-    }
-
-    .dragon-ball-container {
-        width: 240px;
-        height: 240px;
-    }
-
-    .dragon-ball-canvas {
-        width: 200px;
-        height: 200px;
-    }
-
-    .aura-ring-1 {
-        width: 230px;
-        height: 230px;
-    }
-
-    .aura-ring-2 {
-        width: 250px;
-        height: 250px;
-    }
-
-    .hero-stats {
-        gap: var(--spacing-lg);
-    }
-
-    .stat-value {
-        font-size: 1.5rem;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
+    .floating-badge { font-size: 0.7rem; padding: 4px 8px; }
+    .badge-cpp { top: 12%; right: -5%; }
+    .badge-fullstack { top: auto; bottom: 8%; right: -18%; }
+    .badge-available { bottom: 25%; left: -10%; }
 }

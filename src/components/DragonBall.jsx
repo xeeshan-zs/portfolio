@@ -1,7 +1,17 @@
 import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
-const DragonBall = () => {
+const THEME_COLORS = {
+  saiyan:   { ball: 0xff8c00, glow: 0xffd700, star: 0xcc0000, light: 0xffd700, rim: 0xff6600, particle: [1, 0.8, 0.2] },
+  ssgod:    { ball: 0xcc1133, glow: 0xff2244, star: 0xff6688, light: 0xff3355, rim: 0xaa0022, particle: [1, 0.2, 0.3] },
+  ssblue:   { ball: 0x0066cc, glow: 0x00ccff, star: 0x003366, light: 0x00ccff, rim: 0x0044aa, particle: [0.1, 0.7, 1] },
+  ultra:    { ball: 0x5533cc, glow: 0x818cf8, star: 0x3322aa, light: 0x818cf8, rim: 0x4422cc, particle: [0.5, 0.5, 1] },
+  ego:      { ball: 0xcc2288, glow: 0xff69b4, star: 0xff88cc, light: 0xff69b4, rim: 0xaa1166, particle: [1, 0.3, 0.7] },
+  namek:    { ball: 0x008866, glow: 0x64ffda, star: 0x004433, light: 0x64ffda, rim: 0x006644, particle: [0.3, 1, 0.8] },
+  fusion:   { ball: 0x22aa00, glow: 0x39ff14, star: 0x115500, light: 0x39ff14, rim: 0x118800, particle: [0.2, 1, 0.1] },
+};
+
+const DragonBall = ({ theme = 'saiyan' }) => {
   const mountRef = useRef(null);
   const sceneRef = useRef({});
 
@@ -10,127 +20,109 @@ const DragonBall = () => {
     if (!container) return;
 
     const { clientWidth, clientHeight } = container;
+    const tc = THEME_COLORS[theme] || THEME_COLORS.saiyan;
 
-    // Scene
     const scene = new THREE.Scene();
-
-    // Camera
     const camera = new THREE.PerspectiveCamera(45, clientWidth / clientHeight, 0.1, 1000);
     camera.position.z = 4;
 
-    // Renderer
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(clientWidth, clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    // Dragon Ball (orange sphere with star pattern)
-    const ballGeometry = new THREE.SphereGeometry(1.2, 64, 64);
-    const ballMaterial = new THREE.MeshPhongMaterial({
-      color: 0xff8c00,
-      emissive: 0x663300,
+    // Ball
+    const ballGeo = new THREE.SphereGeometry(1.2, 64, 64);
+    const ballMat = new THREE.MeshPhongMaterial({
+      color: tc.ball,
+      emissive: tc.rim,
       emissiveIntensity: 0.3,
       shininess: 100,
-      specular: 0xffff00,
+      specular: tc.glow,
     });
-    const ball = new THREE.Mesh(ballGeometry, ballMaterial);
+    const ball = new THREE.Mesh(ballGeo, ballMat);
     scene.add(ball);
 
-    // Inner glow sphere
-    const glowGeometry = new THREE.SphereGeometry(1.25, 32, 32);
-    const glowMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffd700,
+    // Inner glow
+    const glowGeo = new THREE.SphereGeometry(1.25, 32, 32);
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: tc.glow,
       transparent: true,
       opacity: 0.15,
       side: THREE.BackSide,
     });
-    const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+    const glow = new THREE.Mesh(glowGeo, glowMat);
     scene.add(glow);
 
-    // Stars (4 stars on the front)
-    const starGeometry = new THREE.CircleGeometry(0.12, 5);
-    const starMaterial = new THREE.MeshBasicMaterial({ color: 0xcc0000, side: THREE.DoubleSide });
+    // Stars
+    const starGeo = new THREE.CircleGeometry(0.12, 5);
+    const starMat = new THREE.MeshBasicMaterial({ color: tc.star, side: THREE.DoubleSide });
     const starPositions = [
       { x: -0.3, y: 0.3, z: 1.15 },
       { x: 0.3, y: 0.3, z: 1.15 },
       { x: -0.3, y: -0.3, z: 1.15 },
       { x: 0.3, y: -0.3, z: 1.15 },
     ];
-
     starPositions.forEach(pos => {
-      const star = new THREE.Mesh(starGeometry, starMaterial);
+      const star = new THREE.Mesh(starGeo, starMat);
       star.position.set(pos.x, pos.y, pos.z);
       ball.add(star);
     });
 
-    // Orange circle outlines around stars
-    const outlineGeometry = new THREE.RingGeometry(0.08, 0.14, 16);
-    const outlineMaterial = new THREE.MeshBasicMaterial({
-      color: 0xcc4400,
+    // Star outlines
+    const outGeo = new THREE.RingGeometry(0.08, 0.14, 16);
+    const outMat = new THREE.MeshBasicMaterial({
+      color: tc.star,
       transparent: true,
       opacity: 0.6,
       side: THREE.DoubleSide,
     });
-
     starPositions.forEach(pos => {
-      const outline = new THREE.Mesh(outlineGeometry, outlineMaterial);
-      outline.position.set(pos.x, pos.y, pos.z + 0.01);
-      ball.add(outline);
+      const out = new THREE.Mesh(outGeo, outMat);
+      out.position.set(pos.x, pos.y, pos.z + 0.01);
+      ball.add(out);
     });
 
-    // Ambient light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-    scene.add(ambientLight);
-
-    // Main directional light (golden)
-    const mainLight = new THREE.DirectionalLight(0xffd700, 1.2);
+    // Lights
+    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+    const mainLight = new THREE.DirectionalLight(tc.light, 1.2);
     mainLight.position.set(3, 3, 5);
     scene.add(mainLight);
-
-    // Backlight for rim effect
-    const backLight = new THREE.PointLight(0xff6600, 0.8, 10);
+    const backLight = new THREE.PointLight(tc.rim, 0.8, 10);
     backLight.position.set(-3, -2, -3);
     scene.add(backLight);
 
-    // Floating ki energy particles
-    const particleCount = 80;
-    const particleGeometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    const sizes = new Float32Array(particleCount);
+    // Particles
+    const pCount = 80;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    const pCol = new Float32Array(pCount * 3);
 
-    for (let i = 0; i < particleCount; i++) {
+    for (let i = 0; i < pCount; i++) {
       const i3 = i * 3;
-      const radius = 1.8 + Math.random() * 2;
+      const r = 1.8 + Math.random() * 2;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.random() * Math.PI;
-
-      positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
-      positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
-      positions[i3 + 2] = radius * Math.cos(phi);
-
-      // Gold to orange color range
-      colors[i3] = 1;
-      colors[i3 + 1] = 0.6 + Math.random() * 0.4;
-      colors[i3 + 2] = Math.random() * 0.3;
-
-      sizes[i] = 0.02 + Math.random() * 0.04;
+      pPos[i3] = r * Math.sin(phi) * Math.cos(theta);
+      pPos[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      pPos[i3 + 2] = r * Math.cos(phi);
+      pCol[i3] = tc.particle[0];
+      pCol[i3 + 1] = tc.particle[1] * (0.6 + Math.random() * 0.4);
+      pCol[i3 + 2] = tc.particle[2] * (0.3 + Math.random() * 0.7);
     }
 
-    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    particleGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    pGeo.setAttribute('color', new THREE.BufferAttribute(pCol, 3));
 
-    const particleMaterial = new THREE.PointsMaterial({
+    const pMat = new THREE.PointsMaterial({
       size: 0.05,
       vertexColors: true,
       transparent: true,
       opacity: 0.8,
       blending: THREE.AdditiveBlending,
     });
-
-    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    const particles = new THREE.Points(pGeo, pMat);
     scene.add(particles);
 
     // Animation
@@ -139,62 +131,41 @@ const DragonBall = () => {
 
     const animate = () => {
       animationId = requestAnimationFrame(animate);
-      const elapsed = clock.getElapsedTime();
-
-      // Rotate ball
-      ball.rotation.y = elapsed * 0.5;
-      ball.rotation.x = Math.sin(elapsed * 0.3) * 0.15;
-
-      // Pulsing glow
-      const pulse = 0.12 + Math.sin(elapsed * 2) * 0.05;
-      glowMaterial.opacity = pulse;
-      const glowScale = 1 + Math.sin(elapsed * 2) * 0.03;
-      glow.scale.setScalar(glowScale);
-
-      // Particle rotation
-      particles.rotation.y = elapsed * 0.15;
-      particles.rotation.x = elapsed * 0.1;
-
-      // Float the ball slightly
-      ball.position.y = Math.sin(elapsed * 1.5) * 0.1;
-
+      const t = clock.getElapsedTime();
+      ball.rotation.y = t * 0.5;
+      ball.rotation.x = Math.sin(t * 0.3) * 0.15;
+      glowMat.opacity = 0.12 + Math.sin(t * 2) * 0.05;
+      glow.scale.setScalar(1 + Math.sin(t * 2) * 0.03);
+      particles.rotation.y = t * 0.15;
+      particles.rotation.x = t * 0.1;
+      ball.position.y = Math.sin(t * 1.5) * 0.1;
       renderer.render(scene, camera);
     };
 
     animate();
 
-    // Handle resize
-    const handleResize = () => {
+    const onResize = () => {
       const w = container.clientWidth;
       const h = container.clientHeight;
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     };
-
-    window.addEventListener('resize', handleResize);
-
+    window.addEventListener('resize', onResize);
     sceneRef.current = { animationId, renderer };
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', onResize);
       cancelAnimationFrame(animationId);
       renderer.dispose();
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  }, [theme]);
 
   return (
-    <div
-      ref={mountRef}
-      style={{
-        width: '100%',
-        height: '100%',
-        cursor: 'pointer',
-      }}
-    />
+    <div ref={mountRef} style={{ width: '100%', height: '100%', cursor: 'pointer' }} />
   );
 };
 
