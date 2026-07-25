@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://zeeshan-sarfraz.web.app/sitemap.xml
 Sitemap: https://xeeshan.dev/sitemap.xml
