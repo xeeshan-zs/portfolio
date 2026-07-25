@@ -47,7 +47,9 @@
     opacity: 0;
 }
 
-.scouter-scan .project-scan-line {
+/* Trigger scan on hover — pure CSS, no JS class toggling */
+.project-featured:hover .project-scan-line,
+.project-card:hover .project-scan-line {
     animation: scanSweep 0.9s ease-out forwards;
 }
 

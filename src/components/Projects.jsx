@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ExternalLink, Zap } from 'lucide-react';
 import './Projects.css';
 
@@ -76,12 +75,6 @@ const PowerBar = ({ power }) => {
 const Projects = () => {
     const featured = projects.find(p => p.featured);
     const rest = projects.filter(p => !p.featured);
-    const [scanned, setScanned] = useState(null);
-
-    const handleScan = (idx) => {
-        setScanned(idx);
-        setTimeout(() => setScanned(null), 900);
-    };
 
     return (
         <section id="projects" className="projects section">
@@ -90,10 +83,7 @@ const Projects = () => {
 
                 {/* Featured project — horizontal */}
                 {featured && (
-                    <div
-                        className={`project-featured scroll-animate ${scanned === 'featured' ? 'scouter-scan' : ''}`}
-                        onMouseEnter={() => handleScan('featured')}
-                    >
+                    <div className="project-featured scroll-animate">
                         <div className="project-scan-line" />
                         <div className="project-featured-left">
                             <span className="project-featured-icon">{featured.icon}</span>
@@ -124,11 +114,7 @@ const Projects = () => {
                 {/* Rest — grid */}
                 <div className="projects-grid">
                     {rest.map((project, index) => (
-                        <article
-                            key={index}
-                            className={`project-card scroll-animate delay-1 ${scanned === index ? 'scouter-scan' : ''}`}
-                            onMouseEnter={() => handleScan(index)}
-                        >
+                        <article key={index} className="project-card scroll-animate delay-1">
                             <div className="project-scan-line" />
                             <div className="project-card-top">
                                 <span className="project-card-icon">{project.icon}</span>

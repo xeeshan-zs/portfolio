@@ -11,7 +11,6 @@ const Footer = () => {
     const socialLinks = [
         { label: 'GitHub', href: 'https://github.com/xeeshan-zs' },
         { label: 'LinkedIn', href: 'https://linkedin.com/in/xeeshan-zs' },
-        { label: 'Email', href: 'mailto:zeeshan303.3.1@gmail.com' }
     ];
 
     return (
