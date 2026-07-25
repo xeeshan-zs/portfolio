@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Github, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Github, Linkedin } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [focused, setFocused] = useState(null);
+    const [charging, setCharging] = useState(false);
+    const [sent, setSent] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,8 +14,15 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const mailtoLink = `mailto:zeeshan303.3.1@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${formData.message}%0A%0AFrom: ${formData.email}`;
-        window.open(mailtoLink, '_blank');
+        setCharging(true);
+        // Ki charge animation, then open mailto
+        setTimeout(() => {
+            const mailtoLink = `mailto:zeeshan303.3.1@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${formData.message}%0A%0AFrom: ${formData.email}`;
+            window.open(mailtoLink, '_blank');
+            setCharging(false);
+            setSent(true);
+            setTimeout(() => setSent(false), 2500);
+        }, 800);
     };
 
     const contactMethods = [
@@ -77,6 +86,12 @@ const Contact = () => {
                             <Clock size={14} />
                             <span>Usually responds within 24 hours</span>
                         </div>
+
+                        {/* DBZ scouter card */}
+                        <div className="contact-scouter">
+                            <span className="scouter-label">SCOUTER READING</span>
+                            <span className="scouter-value">POWER LEVEL: ∞</span>
+                        </div>
                     </div>
 
                     {/* Right — Form */}
@@ -121,9 +136,28 @@ const Contact = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary btn-submit">
-                            <Send size={16} />
-                            Send Message
+                        <button
+                            type="submit"
+                            className={`btn btn-primary btn-submit ki-send-btn ${charging ? 'ki-charging' : ''} ${sent ? 'ki-sent' : ''}`}
+                            disabled={charging}
+                        >
+                            {charging ? (
+                                <>
+                                    <span className="ki-charge-orbs">
+                                        <span className="ki-orb-mini" />
+                                        <span className="ki-orb-mini" />
+                                        <span className="ki-orb-mini" />
+                                    </span>
+                                    Charging Ki...
+                                </>
+                            ) : sent ? (
+                                <>⚡ Message Sent!</>
+                            ) : (
+                                <>
+                                    <span className="ki-send-icon">⚡</span>
+                                    Fire Kamehameha
+                                </>
+                            )}
                         </button>
                     </form>
                 </div>

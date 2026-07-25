@@ -204,6 +204,108 @@ a.contact-method:hover .contact-method-value {
     font-size: 0.95rem;
 }
 
+/* ─── Scouter Reading Card ──────────────────────────────────── */
+.contact-scouter {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px;
+    background: rgba(255, 215, 0, 0.04);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-scouter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+}
+
+.scouter-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.scouter-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    font-family: 'SF Mono', Consolas, monospace;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    animation: scouterFlicker 4s ease-in-out infinite;
+}
+
+@keyframes scouterFlicker {
+    0%, 90%, 100% { opacity: 1; }
+    92%  { opacity: 0.6; }
+    94%  { opacity: 1; }
+    96%  { opacity: 0.7; }
+    98%  { opacity: 1; }
+}
+
+/* ─── Ki Send Button ────────────────────────────────────────── */
+.ki-send-btn {
+    transition: var(--transition-normal), box-shadow 0.2s;
+}
+
+.ki-send-btn:hover:not(:disabled) {
+    box-shadow: var(--aura-glow), 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
+.ki-send-icon {
+    font-size: 1rem;
+}
+
+.ki-charging {
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-gold), var(--accent-orange));
+    background-size: 200% 100%;
+    animation: kiChargeWave 0.6s linear infinite;
+    cursor: wait;
+    box-shadow: 0 0 20px var(--accent-gold), 0 0 40px rgba(255, 215, 0, 0.3) !important;
+}
+
+@keyframes kiChargeWave {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.ki-sent {
+    background: var(--accent-green) !important;
+    color: #0a0a14 !important;
+    box-shadow: 0 0 20px var(--accent-green) !important;
+}
+
+.ki-charge-orbs {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.ki-orb-mini {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--btn-primary-text);
+    animation: orbBounce 0.5s ease-in-out infinite alternate;
+}
+
+.ki-orb-mini:nth-child(2) { animation-delay: 0.15s; }
+.ki-orb-mini:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes orbBounce {
+    0%   { transform: translateY(0); opacity: 0.6; }
+    100% { transform: translateY(-5px); opacity: 1; }
+}
+
 /* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
     .contact-layout {

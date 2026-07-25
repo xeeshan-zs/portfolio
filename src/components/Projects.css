@@ -34,6 +34,56 @@
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
+/* ─── Scouter Scan Line ─────────────────────────────────────── */
+.project-scan-line {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.06), rgba(255, 215, 0, 0.12), rgba(255, 215, 0, 0.06), transparent);
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+}
+
+.scouter-scan .project-scan-line {
+    animation: scanSweep 0.9s ease-out forwards;
+}
+
+@keyframes scanSweep {
+    0%   { left: -60%; opacity: 1; }
+    100% { left: 110%; opacity: 0.3; }
+}
+
+/* ─── Power Bar ─────────────────────────────────────────────── */
+.project-power-bar-wrap {
+    width: 100%;
+    margin-top: 6px;
+}
+
+.project-power-bar-track {
+    height: 4px;
+    background: rgba(255, 215, 0, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 0, 0.12);
+}
+
+.project-power-bar-fill {
+    height: 100%;
+    width: var(--power-pct, 0%);
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-gold));
+    border-radius: 2px;
+    transition: width 1s ease-out;
+}
+
+/* Animate bar on card hover */
+.project-card:hover .project-power-bar-fill,
+.project-featured:hover .project-power-bar-fill {
+    box-shadow: 0 0 8px var(--accent-gold);
+}
+
 .project-featured-left {
     display: flex;
     flex-direction: column;

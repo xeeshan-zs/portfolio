@@ -61,6 +61,30 @@
     font-size: 0.9rem;
 }
 
+.footer-scouter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    font-family: 'SF Mono', Consolas, monospace;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.footer-scouter-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    box-shadow: 0 0 6px var(--accent-gold);
+    animation: pulse 2s ease-in-out infinite;
+}
+
 @media (max-width: 900px) {
     .footer-top {
         grid-template-columns: 1fr 1fr;

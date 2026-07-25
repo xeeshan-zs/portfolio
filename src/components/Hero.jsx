@@ -26,12 +26,15 @@ const CODE_LINES = [
 
 const Hero = () => {
     const [typedText, setTypedText] = useState('');
+    const [powerFill, setPowerFill] = useState(0);
+    const [powerVisible, setPowerVisible] = useState(false);
     const fullText = 'npx zeeshan --power-over-9000';
     const containerRef = useRef(null);
     const dragState = useRef({ id: null, pointerId: null, startX: 0, startY: 0, initialX: 0, initialY: 0 });
     const [offsets, setOffsets] = useState({ cpp: { x: 0, y: 0 }, fullStack: { x: 0, y: 0 }, available: { x: 0, y: 0 } });
     const [draggingId, setDraggingId] = useState(null);
 
+    // Typing effect
     useEffect(() => {
         let i = 0;
         const interval = setInterval(() => {
@@ -43,6 +46,21 @@ const Hero = () => {
             }
         }, 60);
         return () => clearInterval(interval);
+    }, []);
+
+    // Ki power bar charge animation
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setPowerVisible(true);
+            let val = 0;
+            const step = setInterval(() => {
+                val += 1.2;
+                if (val >= 100) { val = 100; clearInterval(step); }
+                setPowerFill(val);
+            }, 20);
+            return () => clearInterval(step);
+        }, 600);
+        return () => clearTimeout(timeout);
     }, []);
 
     const clamp = (val, min, max) => Math.min(max, Math.max(min, val));
@@ -98,6 +116,19 @@ const Hero = () => {
                             competitive programming, web development, and software engineering. Turning complex
                             ideas into elegant, scalable solutions.
                         </p>
+
+                        {/* Ki Power Meter */}
+                        <div className={`ki-meter ${powerVisible ? 'ki-meter-visible' : ''}`}>
+                            <div className="ki-meter-label">
+                                <span className="ki-meter-text">⚡ KI LEVEL</span>
+                                <span className="ki-meter-pct">{Math.round(powerFill)}%</span>
+                            </div>
+                            <div className="ki-meter-track">
+                                <div className="ki-meter-fill" style={{ width: `${powerFill}%` }} />
+                                <div className="ki-meter-glow" style={{ width: `${powerFill}%` }} />
+                            </div>
+                        </div>
+
                         <div className="hero-cta">
                             <a href="#projects" className="btn btn-primary">
                                 View Projects
@@ -153,8 +184,15 @@ const Hero = () => {
                             onPointerUp={handlePointerUp}
                             onPointerCancel={handlePointerUp}
                         >
+                            {/* SSJ Lightning bolts */}
+                            <div className="ssj-lightning ssj-lightning-1" />
+                            <div className="ssj-lightning ssj-lightning-2" />
+                            <div className="ssj-lightning ssj-lightning-3" />
+                            <div className="ssj-lightning ssj-lightning-4" />
+
                             <div className="aura-ring aura-ring-1"></div>
                             <div className="aura-ring aura-ring-2"></div>
+                            <div className="aura-ring aura-ring-3"></div>
                             <div className="hero-image-wrapper">
                                 <img src={profileImg} alt="Zeeshan Sarfraz" className="hero-image" />
                             </div>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Skills.css';
 
 const skillCategories = [
@@ -11,9 +12,22 @@ const skillCategories = [
         icon: '📱',
         skills: ['Flutter', 'Dart', 'Firebase'],
     },
+    {
+        title: 'Languages & Tools',
+        icon: '⚡',
+        skills: ['C++', 'JavaScript', 'Python', 'Git', 'GitHub', 'VS Code', 'Figma'],
+    },
 ];
 
 const Skills = () => {
+    const [blasting, setBlasting] = useState(null); // "catIdx-skillIdx"
+
+    const handleKiBlast = (catIdx, skillIdx) => {
+        const key = `${catIdx}-${skillIdx}`;
+        setBlasting(key);
+        setTimeout(() => setBlasting(null), 500);
+    };
+
     return (
         <section id="skills" className="skills section">
             <div className="container">
@@ -26,9 +40,20 @@ const Skills = () => {
                                 <h3 className="skill-block-title">{category.title}</h3>
                             </div>
                             <div className="skill-tags">
-                                {category.skills.map((skill, si) => (
-                                    <span key={si} className="skill-tag">{skill}</span>
-                                ))}
+                                {category.skills.map((skill, si) => {
+                                    const key = `${index}-${si}`;
+                                    return (
+                                        <button
+                                            key={si}
+                                            className={`skill-tag ${blasting === key ? 'ki-blast' : ''}`}
+                                            onClick={() => handleKiBlast(index, si)}
+                                            type="button"
+                                        >
+                                            {skill}
+                                            {blasting === key && <span className="ki-ripple" />}
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
                     ))}

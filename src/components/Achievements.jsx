@@ -68,6 +68,14 @@ const Achievements = () => {
                                 className={`achievement-card scroll-animate delay-${(index % 4) + 1} ${item.highlight ? 'achievement-highlight' : ''}`}
                             >
                                 <div className="achievement-card-glow" />
+                                {/* Golden burst rays for highlighted card */}
+                                {item.highlight && (
+                                    <div className="achievement-burst">
+                                        {[...Array(8)].map((_, i) => (
+                                            <div key={i} className="burst-ray" style={{ '--ray-angle': `${i * 45}deg` }} />
+                                        ))}
+                                    </div>
+                                )}
                                 <div className="achievement-top">
                                     <div className="achievement-icon-wrapper">
                                         <IconComponent size={24} />

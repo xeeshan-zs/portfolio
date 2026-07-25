@@ -79,10 +79,77 @@
     font-size: 1rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     max-width: 500px;
 }
 
+/* ─── Ki Power Meter ────────────────────────────────────────── */
+.ki-meter {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin-bottom: var(--spacing-lg);
+    max-width: 340px;
+}
+
+.ki-meter.ki-meter-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ki-meter-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.ki-meter-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.ki-meter-pct {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+    font-family: 'SF Mono', Consolas, monospace;
+}
+
+.ki-meter-track {
+    height: 6px;
+    background: rgba(255, 215, 0, 0.08);
+    border-radius: 3px;
+    overflow: visible;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    position: relative;
+}
+
+.ki-meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-gold), #fff8a0);
+    border-radius: 3px;
+    transition: width 0.05s linear;
+    position: relative;
+}
+
+.ki-meter-glow {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold));
+    opacity: 0.35;
+    filter: blur(4px);
+    transition: width 0.05s linear;
+    pointer-events: none;
+}
+
+/* ─── CTA ───────────────────────────────────────────────────── */
 .hero-cta {
     display: flex;
     gap: var(--spacing-md);
@@ -106,6 +173,7 @@
     animation: energyPulse 2s ease-in-out infinite;
 }
 
+/* ─── Stats ─────────────────────────────────────────────────── */
 .hero-stats {
     display: flex;
     gap: var(--spacing-xl);
@@ -193,6 +261,8 @@
     font-size: 0.75rem;
     line-height: 1.8;
     color: var(--text-secondary);
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 
 .code-comment { color: #5a6a7a; }
@@ -220,12 +290,14 @@
 
 .terminal-typed {
     color: var(--text-primary);
+    word-break: break-all;
 }
 
 .terminal-cursor {
     color: var(--accent-gold);
     animation: cursorBlink 1s step-end infinite;
     font-weight: 700;
+    flex-shrink: 0;
 }
 
 @keyframes cursorBlink {
@@ -261,6 +333,8 @@
     align-items: center;
     justify-content: center;
     border: 2px solid rgba(255, 215, 0, 0.15);
+    position: relative;
+    z-index: 2;
 }
 
 .hero-image {
@@ -295,6 +369,70 @@
     left: -25px;
     border-color: rgba(255, 107, 53, 0.08);
     animation: auraPulse 3s ease-in-out infinite 0.5s;
+}
+
+.aura-ring-3 {
+    width: 430px;
+    height: 430px;
+    top: -40px;
+    left: -40px;
+    border-color: rgba(255, 215, 0, 0.04);
+    animation: auraPulse 3.5s ease-in-out infinite 1s;
+}
+
+/* ─── SSJ Lightning ─────────────────────────────────────────── */
+.ssj-lightning {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 2px;
+    background: var(--accent-gold);
+    opacity: 0;
+    transform-origin: bottom center;
+}
+
+.ssj-lightning-1 {
+    width: 2px;
+    height: 60px;
+    top: -30px;
+    left: 30%;
+    animation: lightningFlash 2.4s ease-in-out infinite 0.2s;
+    clip-path: polygon(40% 0%, 100% 35%, 60% 40%, 100% 100%, 0% 65%, 40% 60%);
+}
+
+.ssj-lightning-2 {
+    width: 2px;
+    height: 45px;
+    top: 10px;
+    right: 15%;
+    animation: lightningFlash 3.1s ease-in-out infinite 0.8s;
+    clip-path: polygon(40% 0%, 100% 35%, 60% 40%, 100% 100%, 0% 65%, 40% 60%);
+}
+
+.ssj-lightning-3 {
+    width: 2px;
+    height: 50px;
+    bottom: 20px;
+    left: 10%;
+    animation: lightningFlash 2.7s ease-in-out infinite 1.4s;
+    clip-path: polygon(40% 0%, 100% 35%, 60% 40%, 100% 100%, 0% 65%, 40% 60%);
+}
+
+.ssj-lightning-4 {
+    width: 2px;
+    height: 40px;
+    top: 20%;
+    right: 8%;
+    animation: lightningFlash 3.5s ease-in-out infinite 0.5s;
+    clip-path: polygon(40% 0%, 100% 35%, 60% 40%, 100% 100%, 0% 65%, 40% 60%);
+}
+
+@keyframes lightningFlash {
+    0%, 85%, 100% { opacity: 0; transform: scaleY(0.8); }
+    87%  { opacity: 0.9; transform: scaleY(1.1); filter: drop-shadow(0 0 4px var(--accent-gold)); }
+    90%  { opacity: 0.3; transform: scaleY(0.95); }
+    92%  { opacity: 0.8; transform: scaleY(1.05); }
+    95%  { opacity: 0; transform: scaleY(1); }
 }
 
 /* ─── Floating Badges ───────────────────────────────────────── */
@@ -394,7 +532,7 @@
 .scroll-animate.delay-3 { transition-delay: 0.3s; }
 .scroll-animate.delay-4 { transition-delay: 0.4s; }
 
-/* ─── Responsive ────────────────────────────────────────────── */
+/* ─── Responsive: Tablet ────────────────────────────────────── */
 @media (max-width: 1024px) {
     .hero-content {
         grid-template-columns: 1fr;
@@ -407,31 +545,151 @@
     .hero-visual { order: -1; padding-top: 20px; margin-left: 0; }
     .hero-stats { justify-content: center; }
     .hero-terminal { margin-left: auto; margin-right: auto; }
+    .ki-meter { margin-left: auto; margin-right: auto; }
 
     .hero-image-container { width: 280px; height: 280px; }
     .aura-ring-1 { width: 300px; height: 300px; top: -10px; left: -10px; }
     .aura-ring-2 { width: 320px; height: 320px; top: -20px; left: -20px; }
+    .aura-ring-3 { width: 340px; height: 340px; top: -30px; left: -30px; }
 
     .badge-cpp { right: 0; }
     .badge-fullstack { right: 0; }
 }
 
-@media (max-width: 480px) {
-    .hero { padding-top: 80px; }
-    .hero-visual { padding-top: 10px; }
-    .hero-name { font-size: 2.5rem; }
-    .hero-image-container { width: 220px; height: 220px; }
-    .aura-ring-1 { width: 240px; height: 240px; }
-    .aura-ring-2 { width: 260px; height: 260px; }
-    .hero-stats { gap: var(--spacing-md); justify-content: center; }
-    .stat-item { padding: var(--spacing-sm) var(--spacing-md); min-width: 75px; }
-    .stat-value { font-size: 1.5rem; }
-    .hero-cta { flex-direction: column; align-items: center; }
-    .btn { width: 100%; justify-content: center; }
-    .hero-terminal { max-width: 100%; }
+/* ─── Responsive: Mobile ────────────────────────────────────── */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
 
-    .floating-badge { font-size: 0.7rem; padding: 4px 8px; }
-    .badge-cpp { top: 12%; right: -5%; }
-    .badge-fullstack { top: auto; bottom: 8%; right: -18%; }
-    .badge-available { bottom: 25%; left: -10%; }
+    .hero-content {
+        gap: var(--spacing-lg);
+    }
+
+    .hero-visual {
+        padding-top: 10px;
+    }
+
+    .hero-image-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    .aura-ring-1 { width: 258px; height: 258px; top: -9px; left: -9px; }
+    .aura-ring-2 { width: 276px; height: 276px; top: -18px; left: -18px; }
+    .aura-ring-3 { width: 294px; height: 294px; top: -27px; left: -27px; }
+
+    .hero-name {
+        font-size: clamp(2.4rem, 9vw, 3.2rem);
+        line-height: 1.1;
+    }
+
+    .hero-title {
+        font-size: 1.05rem;
+    }
+
+    .hero-description {
+        font-size: 0.92rem;
+        max-width: 100%;
+    }
+
+    .hero-stats {
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stat-item {
+        padding: var(--spacing-sm) var(--spacing-md);
+        min-width: 80px;
+    }
+
+    .stat-value { font-size: 1.5rem; }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    .btn { width: 100%; justify-content: center; max-width: 280px; }
+
+    .hero-terminal {
+        max-width: 100%;
+        font-size: 0.68rem;
+    }
+
+    .terminal-body {
+        font-size: 0.68rem;
+        padding: 10px 12px;
+    }
+
+    .ki-meter {
+        max-width: 100%;
+    }
+
+    /* Badges: tuck them in closer on small screens */
+    .floating-badge {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    .badge-cpp    { top: 5%;  right: -4%;  }
+    .badge-fullstack { bottom: 8%; right: -4%; }
+    .badge-available { bottom: 22%; left: -4%; }
+
+    /* Reduce lightning on small screens */
+    .ssj-lightning-3,
+    .ssj-lightning-4 { display: none; }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding-top: 70px;
+        padding-bottom: 40px;
+    }
+
+    .hero-image-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .aura-ring-1 { width: 216px; height: 216px; top: -8px; left: -8px; }
+    .aura-ring-2 { width: 232px; height: 232px; top: -16px; left: -16px; }
+    .aura-ring-3 { width: 248px; height: 248px; top: -24px; left: -24px; }
+
+    .hero-greeting {
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .hero-name {
+        font-size: clamp(2rem, 10vw, 2.6rem);
+    }
+
+    .hero-title {
+        font-size: 0.95rem;
+    }
+
+    .hero-stats {
+        gap: 8px;
+    }
+
+    .stat-item {
+        min-width: 70px;
+        padding: 10px 12px;
+    }
+
+    .stat-value { font-size: 1.3rem; }
+
+    /* Hide the heavier badge on very small screens */
+    .badge-fullstack { display: none; }
+
+    .hero-terminal {
+        margin-top: var(--spacing-lg);
+    }
 }

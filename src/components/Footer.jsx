@@ -53,6 +53,10 @@ const Footer = () => {
                 </div>
                 <div className="footer-bottom">
                     <p>© 2026 Zeeshan Sarfraz. Crafted with React & Vite.</p>
+                    <p className="footer-scouter">
+                        <span className="footer-scouter-dot" />
+                        SCOUTER: POWER LEVEL ∞
+                    </p>
                 </div>
             </div>
         </footer>

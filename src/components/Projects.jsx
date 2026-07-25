@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ExternalLink, Zap } from 'lucide-react';
 import './Projects.css';
 
@@ -61,9 +62,26 @@ const projects = [
     },
 ];
 
+const PowerBar = ({ power }) => {
+    const pct = Math.min(100, (power / 10000) * 100);
+    return (
+        <div className="project-power-bar-wrap">
+            <div className="project-power-bar-track">
+                <div className="project-power-bar-fill" style={{ '--power-pct': `${pct}%` }} />
+            </div>
+        </div>
+    );
+};
+
 const Projects = () => {
     const featured = projects.find(p => p.featured);
     const rest = projects.filter(p => !p.featured);
+    const [scanned, setScanned] = useState(null);
+
+    const handleScan = (idx) => {
+        setScanned(idx);
+        setTimeout(() => setScanned(null), 900);
+    };
 
     return (
         <section id="projects" className="projects section">
@@ -72,13 +90,18 @@ const Projects = () => {
 
                 {/* Featured project — horizontal */}
                 {featured && (
-                    <div className="project-featured scroll-animate">
+                    <div
+                        className={`project-featured scroll-animate ${scanned === 'featured' ? 'scouter-scan' : ''}`}
+                        onMouseEnter={() => handleScan('featured')}
+                    >
+                        <div className="project-scan-line" />
                         <div className="project-featured-left">
                             <span className="project-featured-icon">{featured.icon}</span>
                             <div className="project-featured-power">
                                 <Zap size={12} />
                                 <span>{featured.power.toLocaleString()}</span>
                             </div>
+                            <PowerBar power={featured.power} />
                         </div>
                         <div className="project-featured-content">
                             <h3 className="project-featured-title">{featured.title}</h3>
@@ -101,7 +124,12 @@ const Projects = () => {
                 {/* Rest — grid */}
                 <div className="projects-grid">
                     {rest.map((project, index) => (
-                        <article key={index} className="project-card scroll-animate delay-1">
+                        <article
+                            key={index}
+                            className={`project-card scroll-animate delay-1 ${scanned === index ? 'scouter-scan' : ''}`}
+                            onMouseEnter={() => handleScan(index)}
+                        >
+                            <div className="project-scan-line" />
                             <div className="project-card-top">
                                 <span className="project-card-icon">{project.icon}</span>
                                 <div className="project-card-power">
@@ -109,6 +137,7 @@ const Projects = () => {
                                     {project.power.toLocaleString()}
                                 </div>
                             </div>
+                            <PowerBar power={project.power} />
                             <h3 className="project-card-title">{project.title}</h3>
                             <p className="project-card-desc">{project.description}</p>
                             <div className="project-tags">

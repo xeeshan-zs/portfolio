@@ -5,7 +5,7 @@
 /* ─── Layout ────────────────────────────────────────────────── */
 .skills-layout {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-xl);
 }
 
@@ -56,15 +56,20 @@
 }
 
 .skill-tag {
+    position: relative;
+    overflow: hidden;
     padding: 8px 16px;
     background: rgba(255, 215, 0, 0.05);
     border: 1px solid rgba(255, 215, 0, 0.1);
     border-radius: 8px;
     font-size: 0.85rem;
+    font-family: var(--font-primary);
     font-weight: 500;
     color: var(--text-secondary);
     transition: var(--transition-fast);
-    cursor: default;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .skill-tag:hover {
@@ -75,7 +80,39 @@
     transform: translateY(-1px);
 }
 
+/* ─── Ki Blast Click Effect ─────────────────────────────────── */
+.skill-tag.ki-blast {
+    color: var(--bg-primary);
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 16px var(--accent-gold), 0 0 32px rgba(255, 215, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.ki-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translate(-50%, -50%) scale(0);
+    animation: kiRippleExpand 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes kiRippleExpand {
+    0%   { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    60%  { transform: translate(-50%, -50%) scale(12); opacity: 0.4; }
+    100% { transform: translate(-50%, -50%) scale(20); opacity: 0; }
+}
+
 /* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .skills-layout { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
     .skills-layout { grid-template-columns: 1fr; }
     .skill-block { padding: var(--spacing-lg); }

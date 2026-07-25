@@ -17,6 +17,7 @@ function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'saiyan';
   });
+  const [scouterScan, setScouterScan] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +32,15 @@ function App() {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
+  }, []);
+
+  // Scouter scan on load
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setScouterScan(true);
+      setTimeout(() => setScouterScan(false), 1600);
+    }, 300);
+    return () => clearTimeout(t);
   }, []);
 
   // Scroll animation observer
@@ -55,6 +65,7 @@ function App() {
 
   return (
     <div className="app">
+      {scouterScan && <div className="scouter-scan-overlay" />}
       <EnergyParticles />
       <Header />
       <main>

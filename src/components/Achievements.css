@@ -38,6 +38,7 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.06);
 }
 
+/* ─── Highlighted card ──────────────────────────────────────── */
 .achievement-highlight {
     border-color: rgba(255, 215, 0, 0.25);
     background: linear-gradient(135deg, var(--bg-card), rgba(255, 215, 0, 0.04));
@@ -53,11 +54,44 @@
     background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
 }
 
+/* ─── Golden Burst Rays ─────────────────────────────────────── */
+.achievement-burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.burst-ray {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 70px;
+    transform-origin: 0 0;
+    transform: rotate(var(--ray-angle)) translateY(-70px);
+    background: linear-gradient(to top, transparent, rgba(255, 215, 0, 0.15));
+    border-radius: 1px;
+    animation: burstPulse 3s ease-in-out infinite;
+    animation-delay: calc(var(--ray-angle) * 0.006s);
+}
+
+@keyframes burstPulse {
+    0%, 100% { opacity: 0.2; height: 60px; }
+    50%       { opacity: 0.6; height: 80px; }
+}
+
+/* ─── Structure ─────────────────────────────────────────────── */
 .achievement-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-icon-wrapper {
@@ -76,6 +110,18 @@
 
 .achievement-card:hover .achievement-icon-wrapper {
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.achievement-highlight .achievement-icon-wrapper {
+    background: rgba(255, 215, 0, 0.14);
+    border-color: rgba(255, 215, 0, 0.35);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+    animation: iconGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes iconGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.15); }
+    50%       { box-shadow: 0 0 24px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.15); }
 }
 
 .achievement-power {
@@ -106,6 +152,8 @@
     color: var(--text-primary);
     margin-bottom: 6px;
     transition: color 0.2s;
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-card:hover .achievement-title {
@@ -121,24 +169,32 @@
     font-size: 0.65rem;
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-org {
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-bottom: 2px;
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-team {
     font-size: 0.7rem;
     color: var(--text-secondary);
     font-style: italic;
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-footer {
     margin-top: var(--spacing-sm);
     padding-top: var(--spacing-xs);
     border-top: 1px solid rgba(255, 215, 0, 0.08);
+    position: relative;
+    z-index: 1;
 }
 
 .achievement-date {
