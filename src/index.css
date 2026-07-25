@@ -171,6 +171,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 80px;
+  }
 }
 
 body {
@@ -344,6 +351,7 @@ a {
   display: flex;
   align-items: center;
   position: relative;
+  scroll-margin-top: 100px;
 }
 
 .section-title {
@@ -385,6 +393,7 @@ a {
   .section {
     padding: var(--spacing-xl) 0;
     min-height: auto;
+    scroll-margin-top: 80px;
   }
 }
 

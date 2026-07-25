@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { MapPin, Clock, Github, Linkedin, Zap } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
-// Web3Forms access key — submissions go to your inbox, key is public-safe
-const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+const EMAILJS_SERVICE_ID = 'service_ge8znab';
+const EMAILJS_TEMPLATE_ID = 'template_ywsa3t9';
+const EMAILJS_PUBLIC_KEY = 'gmBtwJOlcKZyX1xA2';
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -22,27 +24,29 @@ const Contact = () => {
         setError(false);
 
         try {
-            const res = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify({
-                    access_key: WEB3FORMS_KEY,
-                    subject: `Portfolio Contact from ${formData.name}`,
+            const res = await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
                     from_name: formData.name,
+                    from_email: formData.email,
+                    name: formData.name,
                     email: formData.email,
                     message: formData.message,
-                    botcheck: '',
-                }),
-            });
-            const data = await res.json();
-            if (data.success) {
+                    reply_to: formData.email,
+                },
+                EMAILJS_PUBLIC_KEY
+            );
+
+            if (res.status === 200 || res.text === 'OK') {
                 setSent(true);
                 setFormData({ name: '', email: '', message: '' });
                 setTimeout(() => setSent(false), 3000);
             } else {
                 setError(true);
             }
-        } catch {
+        } catch (err) {
+            console.error('EmailJS error:', err);
             setError(true);
         } finally {
             setCharging(false);
