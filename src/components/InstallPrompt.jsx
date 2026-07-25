@@ -34,8 +34,7 @@ const InstallPrompt = () => {
 
         window.addEventListener('beforeinstallprompt', handler);
 
-        // Show custom prompt for iOS or after delay
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        // Show custom prompt after delay
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
         if (!isStandalone) {

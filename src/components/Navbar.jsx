@@ -2,17 +2,17 @@ import { useState, useEffect } from 'react';
 import { User, Lightbulb, FolderOpen, GraduationCap, Trophy, Mail } from 'lucide-react';
 import './Navbar.css';
 
+const navItems = [
+  { id: 'hero', label: 'About', icon: User },
+  { id: 'skills', label: 'Skills', icon: Lightbulb },
+  { id: 'projects', label: 'Projects', icon: FolderOpen },
+  { id: 'achievements', label: 'Awards', icon: Trophy },
+  { id: 'education', label: 'Education', icon: GraduationCap },
+  { id: 'contact', label: 'Contact', icon: Mail }
+];
+
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('hero');
-
-  const navItems = [
-    { id: 'hero', label: 'About', icon: User },
-    { id: 'skills', label: 'Skills', icon: Lightbulb },
-    { id: 'projects', label: 'Projects', icon: FolderOpen },
-    { id: 'achievements', label: 'Awards', icon: Trophy },
-    { id: 'education', label: 'Education', icon: GraduationCap },
-    { id: 'contact', label: 'Contact', icon: Mail }
-  ];
 
   useEffect(() => {
     const handleScroll = () => {

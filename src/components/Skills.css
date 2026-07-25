@@ -6,12 +6,12 @@
 .skills-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
 }
 
 /* ─── Block ─────────────────────────────────────────────────── */
 .skill-block {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     background: var(--bg-card);
     border: 1px solid rgba(255, 215, 0, 0.08);
     border-radius: var(--radius-lg);
@@ -19,31 +19,31 @@
 }
 
 .skill-block:hover {
-    border-color: rgba(255, 215, 0, 0.18);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.05);
+    border-color: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25), 0 0 12px rgba(255, 215, 0, 0.06);
 }
 
 .skill-block-header {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
 }
 
 .skill-block-icon {
-    font-size: 1.2rem;
-    width: 36px;
-    height: 36px;
+    font-size: 1.4rem;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 215, 0, 0.08);
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 215, 0, 0.12);
 }
 
 .skill-block-title {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -52,17 +52,17 @@
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
 }
 
 .skill-tag {
-    padding: 6px 14px;
-    background: rgba(255, 215, 0, 0.06);
+    padding: 8px 16px;
+    background: rgba(255, 215, 0, 0.05);
     border: 1px solid rgba(255, 215, 0, 0.1);
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     transition: var(--transition-fast);
     cursor: default;
 }
@@ -78,4 +78,5 @@
 /* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
     .skills-layout { grid-template-columns: 1fr; }
+    .skill-block { padding: var(--spacing-lg); }
 }

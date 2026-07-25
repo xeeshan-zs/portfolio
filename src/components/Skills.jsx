@@ -2,39 +2,14 @@ import './Skills.css';
 
 const skillCategories = [
     {
-        title: 'Programming',
-        icon: '⚡',
-        skills: ['C++', 'Java', 'JavaScript', 'Python', 'C#', 'Dart'],
-    },
-    {
-        title: 'Web',
+        title: 'Web Dev',
         icon: '🌐',
-        skills: ['React', 'Next.js', 'HTML/CSS', 'Firebase'],
+        skills: ['React', 'Next.js', 'Node.js', 'Express.js', 'Tailwind CSS', 'Firebase', 'Supabase'],
     },
     {
-        title: 'Backend',
-        icon: '🗄️',
-        skills: ['Node.js', 'Express.js', 'Supabase', 'SQL Server'],
-    },
-    {
-        title: 'Mobile',
+        title: 'Android App Dev',
         icon: '📱',
-        skills: ['Flutter', 'Dart'],
-    },
-    {
-        title: 'Tools',
-        icon: '🛠️',
-        skills: ['Git', 'VS Code', 'Cursor AI', 'Vite', 'npm', 'MySQL'],
-    },
-    {
-        title: 'Core',
-        icon: '🎯',
-        skills: ['OOP', 'Data Structures', 'Algorithms', 'Problem Solving'],
-    },
-    {
-        title: 'Languages',
-        icon: '💬',
-        skills: ['English', 'Urdu'],
+        skills: ['Flutter', 'Dart', 'Firebase'],
     },
 ];
 
@@ -42,10 +17,10 @@ const Skills = () => {
     return (
         <section id="skills" className="skills section">
             <div className="container">
-                <h2 className="section-title scroll-animate">Skills & Arsenal</h2>
+                <h2 className="section-title scroll-animate">Skills</h2>
                 <div className="skills-layout">
                     {skillCategories.map((category, index) => (
-                        <div key={index} className={`skill-block scroll-animate delay-${(index % 4) + 1}`}>
+                        <div key={index} className={`skill-block scroll-animate delay-${index + 1}`}>
                             <div className="skill-block-header">
                                 <span className="skill-block-icon">{category.icon}</span>
                                 <h3 className="skill-block-title">{category.title}</h3>
