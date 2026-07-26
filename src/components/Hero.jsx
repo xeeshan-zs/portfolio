@@ -204,7 +204,7 @@ const Hero = () => {
                             <div className="aura-ring aura-ring-2"></div>
                             <div className="aura-ring aura-ring-3"></div>
                             <div className="hero-image-wrapper">
-                                <img src={profileImg} alt="Zeeshan Sarfraz" className="hero-image" />
+                                <img src={profileImg} alt="Zeeshan Sarfraz" className="hero-image" fetchPriority="high" loading="eager" width="400" height="400" />
                             </div>
                             <div
                                 className={`floating-badge badge-react ${draggingId === 'react' ? 'is-dragging' : ''}`}

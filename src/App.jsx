@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import './index.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -11,8 +11,10 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
-import EnergyParticles from './components/EnergyParticles';
 import CustomCursor from './components/CustomCursor';
+
+const EnergyParticles = lazy(() => import('./components/EnergyParticles'));
+
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -68,7 +70,9 @@ function App() {
     <div className="app">
       {scouterScan && <div className="scouter-scan-overlay" />}
       <CustomCursor />
-      <EnergyParticles />
+      <Suspense fallback={null}>
+        <EnergyParticles />
+      </Suspense>
       <Header />
       <main>
         <Hero theme={theme} />
