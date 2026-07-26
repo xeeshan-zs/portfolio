@@ -4,16 +4,17 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Achievements from './components/Achievements';
-import Education from './components/Education';
-import Contact from './components/Contact';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 
 const EnergyParticles = lazy(() => import('./components/EnergyParticles'));
+const Experience = lazy(() => import('./components/Experience'));
+const Projects = lazy(() => import('./components/Projects'));
+const Achievements = lazy(() => import('./components/Achievements'));
+const Education = lazy(() => import('./components/Education'));
+const Contact = lazy(() => import('./components/Contact'));
+
 
 
 function App() {
@@ -77,11 +78,13 @@ function App() {
       <main>
         <Hero theme={theme} />
         <Skills />
-        <Experience />
-        <Projects />
-        <Achievements />
-        <Education />
-        <Contact />
+        <Suspense fallback={null}>
+          <Experience />
+          <Projects />
+          <Achievements />
+          <Education />
+          <Contact />
+        </Suspense>
       </main>
       <Navbar />
       <ThemeToggle theme={theme} setTheme={setTheme} />
