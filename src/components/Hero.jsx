@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import profileImg from '../assets/profile.jpg';
+import profileWebp from '../assets/profile.webp';
 import './Hero.css';
 
 const CODE_LINES = [
@@ -203,9 +204,10 @@ const Hero = () => {
                             <div className="aura-ring aura-ring-1"></div>
                             <div className="aura-ring aura-ring-2"></div>
                             <div className="aura-ring aura-ring-3"></div>
-                            <div className="hero-image-wrapper">
+                            <picture className="hero-image-wrapper">
+                                <source srcSet={profileWebp} type="image/webp" />
                                 <img src={profileImg} alt="Zeeshan Sarfraz" className="hero-image" fetchPriority="high" loading="eager" width="400" height="400" />
-                            </div>
+                            </picture>
                             <div
                                 className={`floating-badge badge-react ${draggingId === 'react' ? 'is-dragging' : ''}`}
                                 style={badgeStyle('react')}

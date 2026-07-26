@@ -1,0 +1,23 @@
+# Zeeshan Sarfraz Portfolio
+
+> Zeeshan Sarfraz is a Full Stack Developer, Software Engineer, and Computer Science (BSCS) student at NUML Lahore. Specializing in React, Flutter, Node.js, and Firebase. Founder / Lead at Zyfiro.
+
+## Core Stack & Skills
+
+- **Frontend**: React, JavaScript, HTML5, CSS3, TailwindCSS
+- **Mobile**: Flutter, Dart, Firebase
+- **Backend & Database**: Node.js, Express, Firebase Firestore & Realtime DB, MongoDB
+- **Languages**: C++, JavaScript, Dart, SQL
+
+## Featured Projects
+
+- [z-nectar](https://github.com/xeeshan-zs/z-nectar): All-in-one mobile app for student services & utilities.
+- [EduSync](https://github.com/xeeshan-zs/EduSync): Smart education platform for assignment & schedule tracking.
+- [Library Management System](https://github.com/xeeshan-zs/Library-Management): High-performance C++ OOP management tool.
+
+## Links
+
+- **Website**: https://zeeshan-sarfraz.web.app/
+- **GitHub**: https://github.com/xeeshan-zs
+- **LinkedIn**: https://linkedin.com/in/xeeshan-zs
+- **Resume**: https://zeeshan-sarfraz.web.app/Resume_Zeeshan_Sarfraz.docx
