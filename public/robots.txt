@@ -50,5 +50,4 @@ User-agent: Meta-ExternalAgent
 Allow: /
 
 # Sitemaps
-Sitemap: https://xeeshan.dev/sitemap.xml
 Sitemap: https://zeeshan-sarfraz.web.app/sitemap.xml
