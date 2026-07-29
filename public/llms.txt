@@ -1,6 +1,6 @@
-# Zeeshan Sarfraz Portfolio
+# Zeeshan Sarfraz (Zeeshan Zyfiro) Portfolio
 
-> Zeeshan Sarfraz is a Full Stack Developer, Software Engineer, and Computer Science (BSCS) student at NUML Lahore. Specializing in React, Flutter, Node.js, and Firebase. Founder / Lead at Zyfiro.
+> Zeeshan Sarfraz (Zeeshan Zyfiro / Zeeshan Sarfraz Zyfiro) is a Full Stack Developer, Software Engineer, and Computer Science (BSCS) student at NUML Lahore. Specializing in React, Flutter, Node.js, and Firebase. Founder / Lead at Zyfiro.
 
 ## Projects
 
