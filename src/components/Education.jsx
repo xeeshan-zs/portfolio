@@ -5,7 +5,7 @@ const educationItems = [
         institution: 'NUML Lahore',
         full: 'National University of Modern Languages',
         degree: 'BS Computer Science',
-        period: 'Current — Semester 6',
+        period: '',
         highlights: [
             'Tech Head, ACM Society',
             'Competitive Programming Lead, HackForge',
@@ -17,7 +17,7 @@ const educationItems = [
         institution: 'APS College, Mangla Cantt',
         full: 'Army Public School',
         degree: 'Intermediate — Computer Science',
-        period: 'Completed',
+        period: '',
         highlights: [
             'Strong CS foundation',
             'Algorithms & data structures intro',
@@ -45,7 +45,7 @@ const Education = () => {
                                         <h3 className="edu-school">{item.institution}</h3>
                                         <span className="edu-full">{item.full}</span>
                                     </div>
-                                    <span className="edu-period">{item.period}</span>
+                                    {item.period && <span className="edu-period">{item.period}</span>}
                                 </div>
                                 <p className="edu-degree">{item.degree}</p>
                                 <ul className="edu-highlights">

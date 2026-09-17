@@ -178,10 +178,10 @@ const Hero = () => {
                                 View Projects
                                 <span className="btn-arrow">→</span>
                             </a>
-                            <a href="/Resume_Zeeshan_Sarfraz.docx" download className="btn btn-primary">
+                            {/* <a href="/Resume_Zeeshan_Sarfraz.docx" download className="btn btn-primary">
                                 Download Resume
                                 <span className="btn-arrow">↓</span>
-                            </a>
+                            </a> */}
                             <a href="#contact" className="btn btn-outline">
                                 Get in Touch
                                 <span className="ki-orb"></span>

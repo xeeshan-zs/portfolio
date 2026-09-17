@@ -25,7 +25,7 @@ const leadershipRoles = [
     {
         title: 'Tech Head',
         organization: 'ACM Society',
-        date: 'Current',
+        date: '2025',
         icon: Crown,
     },
     {

@@ -1,7 +1,7 @@
 # Zeeshan Sarfraz
 
 **Location:** Pakistan  
-**Email:** zeeshan303.3.1@gmail.com  
+**Email:** zeeshansarfraz.m@gmail.com  
 **Phone:** +92 310 9233844  
 **GitHub:** [github.com/xeeshan-zs](https://github.com/xeeshan-zs)
 
@@ -23,7 +23,31 @@ Passionate Computer Science student and Developer with a focus on building excep
 
 ---
 
+## Experience
+
+**Flutter Developer Intern** | *ACME Digital Solutions, Pakistan* | Feb 2025 - Mar 2025
+*   Completed a structured Flutter internship building cross platform mobile UIs using Dart and the Flutter framework.
+*   Integrated Firebase Auth and Firestore for real time data and user authentication flows.
+*   Gained exposure to professional mobile development workflows, PR based code review, and deployment pipelines.
+
+---
+
 ## Projects
+
+**Zohaib Inmotion - Client Portfolio Website** | *React, Firebase*  
+[zohaib-inmotion.web.app](https://zohaib-inmotion.web.app)
+*   Designed and built a personal portfolio website for a media and video editing client, covering full cycle development from requirements to deployment.
+*   Built a responsive, visually driven UI in React with Firebase hosting.
+
+**Tavryz - Software Engineering & Design Studio** | *React, Firebase*  
+[tavryz.com](https://tavryz.com)
+*   Contributing as a developer to a software engineering and design studio delivering web, mobile, and AI driven client projects.
+*   Built and maintain client-facing sites using React and Firebase.
+
+**ICCS Globalized - Client Website** | *React, Firebase*  
+[iccsglobalized.com](https://iccsglobalized.com)
+*   Delivered a live production website for a real client, covering full cycle development from requirements to deployment.
+*   Built responsive UI components in React with Firebase backend integration.
 
 **Z Student Portal** | *React, Firebase*  
 [portal-numl.web.app](https://portal-numl.web.app)
@@ -57,7 +81,7 @@ Passionate Computer Science student and Developer with a focus on building excep
 
 ## Education
 
-**Bachelor of Science in Computer Science** | *National University of Modern Languages (NUML)* | Current
+**Bachelor of Science in Computer Science** | *National University of Modern Languages (NUML)*
 *   Active participant in university tech events.
 
-**Intermediate - Computer Science** | *APS College, Mangla Cantt* | Completed
+**Intermediate - Computer Science** | *APS College, Mangla Cantt*

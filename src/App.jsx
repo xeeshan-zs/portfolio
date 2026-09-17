@@ -19,7 +19,7 @@ const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'saiyan';
+    return localStorage.getItem('theme') || 'ssblue';
   });
   const [scouterScan, setScouterScan] = useState(false);
 

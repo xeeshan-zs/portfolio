@@ -3,6 +3,27 @@ import './Projects.css';
 
 const projects = [
     {
+        title: 'Zohaib Inmotion',
+        description: 'Designed and built a personal portfolio website for a media and video editing client, covering full cycle development from requirements to deployment. Built a responsive, visually driven UI in React with Firebase hosting.',
+        tags: ['React', 'Firebase', 'Web App'],
+        icon: '🎬',
+        link: 'https://zohaib-inmotion.web.app',
+    },
+    {
+        title: 'Tavryz',
+        description: 'Contributing as a developer to a software engineering and design studio delivering web, mobile, and AI driven client projects. Built and maintain client-facing sites using React and Firebase.',
+        tags: ['React', 'Firebase', 'Web App'],
+        icon: '💼',
+        link: 'https://tavryz.com',
+    },
+    {
+        title: 'XLICON V2 MD',
+        description: 'Contributed a pull request that was reviewed and merged into this open-source WhatsApp bot repository.',
+        tags: ['Open Source', 'WhatsApp Bot'],
+        icon: '🤝',
+        link: 'https://github.com/ahmmikun/XLICON-V2-MD',
+    },
+    {
         title: 'ICCS Globalized',
         description: 'Delivered a live production website for a real client, covering full-cycle development from requirements to deployment. Built responsive UI components in React with Firebase backend integration.',
         tags: ['React', 'Firebase', 'Web App'],
