@@ -42,7 +42,7 @@ const Skills = ({ theme }) => {
                             <div className="skill-tags">
                                 {category.skills.map((skill, si) => {
                                     const key = `${index}-${si}`;
-                                    if (theme === 'editorial') {
+                                    if (theme === 'editorial' || theme === 'eclipse') {
                                         return <span key={si} className="skill-tag">{skill}</span>;
                                     }
                                     return (

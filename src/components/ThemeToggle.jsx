@@ -4,6 +4,7 @@ import './ThemeToggle.css';
 
 const themes = [
     { id: 'editorial', label: 'Anime Editorial', color: '#b53d35', desc: 'Professional · ink & paper' },
+    { id: 'eclipse', label: 'Eclipse', color: '#d5f478', desc: 'Sculptural · interactive 3D' },
     { id: 'saiyan', label: 'Super Saiyan', color: '#ffd700', desc: 'Legendary Power' },
     { id: 'ssgod', label: 'SS God', color: '#ff2244', desc: 'Divine Ki' },
     { id: 'ssblue', label: 'SS Blue', color: '#00ccff', desc: 'Godly Energy' },

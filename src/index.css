@@ -163,6 +163,34 @@
   --aura-glow: 0 0 20px rgba(57, 255, 20, 0.4);
 }
 
+/* Keep Eclipse's palette available before its on-demand presentation loads. */
+[data-theme="eclipse"] {
+  color-scheme: dark;
+  --bg-primary: #111310;
+  --bg-secondary: #191c17;
+  --bg-card: #1a1e18;
+  --text-primary: #f0f0e6;
+  --text-secondary: #b5b9ac;
+  --text-accent: #d5f478;
+  --accent-gold: #d5f478;
+  --accent-green: #d5f478;
+  --accent-blue: #b8c8e1;
+  --accent-orange: #d5f478;
+  --btn-primary-bg: #d5f478;
+  --btn-primary-text: #1a210e;
+  --shadow-outset: 0 12px 32px #0002;
+  --shadow-outset-sm: 0 4px 16px #0002;
+  --shadow-inset: inset 0 1px 0 #ffffff08;
+  --shadow-hover: 0 16px 40px #0003;
+  --aura-glow: 0 6px 20px #0002;
+  --eclipse-line: #363c30;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+.eclipse-loading { min-height: 850px !important; }
+
 * {
   margin: 0;
   padding: 0;

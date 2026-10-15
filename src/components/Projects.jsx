@@ -75,7 +75,7 @@ const projects = [
     },
 ];
 
-const Projects = () => {
+const Projects = ({ theme }) => {
     const featured = projects.find(p => p.featured);
     const rest = projects.filter(p => !p.featured);
 
@@ -89,7 +89,15 @@ const Projects = () => {
                     <div className="project-featured scroll-animate">
                         <div className="project-scan-line" />
                         <div className="project-featured-left">
-                            <span className="project-featured-icon">{featured.icon}</span>
+                            {theme === 'eclipse' ? (
+                                <div className="eclipse-world" aria-hidden="true">
+                                    <div className="eclipse-world-sphere">
+                                        <span /><span /><span /><span />
+                                    </div>
+                                    <div className="eclipse-world-orbit" />
+                                    <span className="eclipse-world-caption">GLOBAL REACH. REAL IMPACT.</span>
+                                </div>
+                            ) : <span className="project-featured-icon">{featured.icon}</span>}
                         </div>
                         <div className="project-featured-content">
                             <h3 className="project-featured-title">{featured.title}</h3>

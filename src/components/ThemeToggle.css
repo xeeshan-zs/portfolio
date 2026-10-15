@@ -159,6 +159,14 @@
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/* A miniature eclipse makes the new theme recognizable in every palette. */
+.theme-card--eclipse .theme-card-orb {
+    background: radial-gradient(circle at 65% 35%, #41493a, #10130f 67%) !important;
+    border: 1px solid #c3df72;
+    box-shadow: -3px 2px 0 #d5f478, 0 0 14px #d5f42530 !important;
+}
+.theme-card--eclipse .theme-card-check { color: #d5f478; }
+
 .theme-card-name {
     font-size: 0.6rem;
     font-weight: 600;

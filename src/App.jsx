@@ -11,6 +11,7 @@ import EditorialCursor from './components/EditorialCursor';
 import './editorial.css';
 
 const EnergyParticles = lazy(() => import('./components/EnergyParticles'));
+const EclipseHero = lazy(() => import('./components/EclipseHero'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));
 const Achievements = lazy(() => import('./components/Achievements'));
@@ -24,6 +25,7 @@ function App() {
     return localStorage.getItem('portfolio-theme-v2') || 'editorial';
   });
   const [scouterScan, setScouterScan] = useState(false);
+  const isStudioTheme = theme === 'editorial' || theme === 'eclipse';
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -87,17 +89,21 @@ function App() {
 
   return (
     <div className="app">
-      {theme !== 'editorial' && scouterScan && <div className="scouter-scan-overlay" />}
-      {theme !== 'editorial' && <CustomCursor />}
+      {!isStudioTheme && scouterScan && <div className="scouter-scan-overlay" />}
+      {!isStudioTheme && <CustomCursor />}
       {theme === 'editorial' && <EditorialCursor />}
-      {theme !== 'editorial' && <Suspense fallback={null}><EnergyParticles /></Suspense>}
+      {!isStudioTheme && <Suspense fallback={null}><EnergyParticles /></Suspense>}
       <Header />
       <main>
-        <Hero theme={theme} />
+        {theme === 'eclipse' ? (
+          <Suspense fallback={<section className="eclipse-loading section" aria-label="Loading Eclipse theme" />}>
+            <EclipseHero />
+          </Suspense>
+        ) : <Hero theme={theme} />}
         <Skills theme={theme} />
         <Suspense fallback={null}>
           <Experience />
-          <Projects />
+          <Projects theme={theme} />
           <Achievements />
           <Education />
           <Contact theme={theme} />

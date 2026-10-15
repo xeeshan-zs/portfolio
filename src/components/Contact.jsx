@@ -185,14 +185,14 @@ const Contact = ({ theme }) => {
                                         <span className="ki-orb-mini" />
                                         <span className="ki-orb-mini" />
                                     </span>
-                                    {theme === 'editorial' ? 'Sending...' : 'Charging Ki...'}
+                                    {theme === 'editorial' || theme === 'eclipse' ? 'Sending...' : 'Charging Ki...'}
                                 </>
                             ) : sent ? (
-                                <>{theme === 'editorial' ? 'Message sent!' : '⚡ Message Sent!'}</>
+                                <>{theme === 'editorial' || theme === 'eclipse' ? 'Message sent!' : '⚡ Message Sent!'}</>
                             ) : (
                                 <>
                                     <span className="ki-send-icon">⚡</span>
-                                    {theme === 'editorial' ? 'Send message' : 'Fire Kamehameha'}
+                                    {theme === 'editorial' || theme === 'eclipse' ? 'Send message' : 'Fire Kamehameha'}
                                 </>
                             )}
                         </button>
