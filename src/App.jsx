@@ -7,6 +7,8 @@ import Skills from './components/Skills';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import EditorialCursor from './components/EditorialCursor';
+import './editorial.css';
 
 const EnergyParticles = lazy(() => import('./components/EnergyParticles'));
 const Experience = lazy(() => import('./components/Experience'));
@@ -19,7 +21,7 @@ const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'ssblue';
+    return localStorage.getItem('portfolio-theme-v2') || 'editorial';
   });
   const [scouterScan, setScouterScan] = useState(false);
 
@@ -29,7 +31,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('portfolio-theme-v2', theme);
   }, [theme]);
 
   useEffect(() => {
@@ -85,21 +87,20 @@ function App() {
 
   return (
     <div className="app">
-      {scouterScan && <div className="scouter-scan-overlay" />}
-      <CustomCursor />
-      <Suspense fallback={null}>
-        <EnergyParticles />
-      </Suspense>
+      {theme !== 'editorial' && scouterScan && <div className="scouter-scan-overlay" />}
+      {theme !== 'editorial' && <CustomCursor />}
+      {theme === 'editorial' && <EditorialCursor />}
+      {theme !== 'editorial' && <Suspense fallback={null}><EnergyParticles /></Suspense>}
       <Header />
       <main>
         <Hero theme={theme} />
-        <Skills />
+        <Skills theme={theme} />
         <Suspense fallback={null}>
           <Experience />
           <Projects />
           <Achievements />
           <Education />
-          <Contact />
+          <Contact theme={theme} />
         </Suspense>
       </main>
       <Navbar />

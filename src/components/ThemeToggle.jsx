@@ -3,6 +3,7 @@ import { Sparkles, X } from 'lucide-react';
 import './ThemeToggle.css';
 
 const themes = [
+    { id: 'editorial', label: 'Anime Editorial', color: '#b53d35', desc: 'Professional · ink & paper' },
     { id: 'saiyan', label: 'Super Saiyan', color: '#ffd700', desc: 'Legendary Power' },
     { id: 'ssgod', label: 'SS God', color: '#ff2244', desc: 'Divine Ki' },
     { id: 'ssblue', label: 'SS Blue', color: '#00ccff', desc: 'Godly Energy' },
@@ -22,8 +23,8 @@ const ThemeToggle = ({ theme, setTheme }) => {
                 {isOpen && (
                     <div className="theme-panel">
                         <div className="theme-panel-header">
-                            <span className="theme-panel-title">SELECT FORM</span>
-                            <button className="theme-panel-close" onClick={() => setIsOpen(false)}>
+                            <span className="theme-panel-title">Choose a theme</span>
+                            <button className="theme-panel-close" onClick={() => setIsOpen(false)} aria-label="Close theme menu">
                                 <X size={16} />
                             </button>
                         </div>
@@ -31,8 +32,10 @@ const ThemeToggle = ({ theme, setTheme }) => {
                             {themes.map((t) => (
                                 <button
                                     key={t.id}
-                                    className={`theme-card ${theme === t.id ? 'active' : ''}`}
+                                    className={`theme-card theme-card--${t.id} ${theme === t.id ? 'active' : ''}`}
                                     onClick={() => { setTheme(t.id); setIsOpen(false); }}
+                                    aria-label={`${t.label}: ${t.desc}`}
+                                    aria-pressed={theme === t.id}
                                 >
                                     <div className="theme-card-orb" style={{
                                         background: `radial-gradient(circle at 35% 35%, ${t.color}dd, ${t.color}44)`,
@@ -51,6 +54,7 @@ const ThemeToggle = ({ theme, setTheme }) => {
                     className="theme-toggle"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Change theme"
+                    aria-expanded={isOpen}
                 >
                     <Sparkles size={20} />
                 </button>

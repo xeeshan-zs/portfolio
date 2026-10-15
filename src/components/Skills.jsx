@@ -19,7 +19,7 @@ const skillCategories = [
     },
 ];
 
-const Skills = () => {
+const Skills = ({ theme }) => {
     const [blasting, setBlasting] = useState(null); // "catIdx-skillIdx"
 
     const handleKiBlast = (catIdx, skillIdx) => {
@@ -42,6 +42,9 @@ const Skills = () => {
                             <div className="skill-tags">
                                 {category.skills.map((skill, si) => {
                                     const key = `${index}-${si}`;
+                                    if (theme === 'editorial') {
+                                        return <span key={si} className="skill-tag">{skill}</span>;
+                                    }
                                     return (
                                         <button
                                             key={si}

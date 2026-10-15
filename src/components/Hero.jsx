@@ -27,7 +27,6 @@ function highlightLine(text) {
   if (text.trim().startsWith('//')) return <span className="code-comment">{text}</span>;
 
   const keywords = ['import', 'export', 'default', 'function', 'return', 'const', 'from'];
-  const parts = [];
   let result = text;
 
   for (const kw of keywords) {
@@ -51,7 +50,41 @@ function highlightLine(text) {
   );
 }
 
-const Hero = () => {
+const EditorialHero = () => (
+    <section id="hero" className="editorial-hero section" aria-labelledby="editorial-name">
+        <div className="container">
+            <div className="editorial-hero-grid">
+                <div className="editorial-hero-copy">
+                    <p className="editorial-eyebrow"><span className="editorial-issue">01 / PORTFOLIO</span> Full Stack Developer · Lahore, Pakistan</p>
+                    <h1 id="editorial-name" className="editorial-name">Zeeshan<br /><em>Sarfraz.</em></h1>
+                    <p className="editorial-lead">I build useful digital products, from responsive web experiences to mobile apps.</p>
+                    <p className="editorial-summary">I work across React, Flutter, and Firebase, with experience delivering live client sites and building products from idea to deployment.</p>
+                    <div className="editorial-actions">
+                        <a href="#projects" className="btn btn-primary">Explore my work <span aria-hidden="true">↗</span></a>
+                        <a href="/Zeeshan_Sarfraz_Resume.pdf" className="btn btn-outline" target="_blank" rel="noopener noreferrer">View résumé <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <div className="editorial-proof" aria-label="Highlights">
+                        <div><strong>Production work</strong><span>Client sites live on the web</span></div>
+                        <div><strong>1st place</strong><span>CosmoCon ’25 Web Hackathon</span></div>
+                    </div>
+                </div>
+                <div className="editorial-portrait-block">
+                    <div className="editorial-portrait-frame">
+                        <picture>
+                            <source srcSet={profileWebp} type="image/webp" />
+                            <img src={profileImg} alt="Illustrated portrait of Zeeshan Sarfraz" width="820" height="1024" fetchPriority="high" />
+                        </picture>
+                        <span className="editorial-portrait-mark" aria-hidden="true">Z/S</span>
+                    </div>
+                    <div className="editorial-portrait-caption"><span>FIG. 01 — THE DEVELOPER</span><span>設計 × 技術</span></div>
+                </div>
+            </div>
+            <div className="editorial-hero-footer"><span>SELECTED WORK & EXPERIENCE</span><span aria-hidden="true">SCROLL TO EXPLORE ↓</span></div>
+        </div>
+    </section>
+);
+
+const LegacyHero = () => {
     const [typedCount, setTypedCount] = useState(0);
     const [previewStage, setPreviewStage] = useState(0);
     const [terminalVisible, setTerminalVisible] = useState(false);
@@ -314,5 +347,7 @@ const Hero = () => {
         </section>
     );
 };
+
+const Hero = ({ theme }) => theme === 'editorial' ? <EditorialHero /> : <LegacyHero />;
 
 export default Hero;

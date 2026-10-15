@@ -7,7 +7,7 @@ const EMAILJS_SERVICE_ID = 'service_ge8znab';
 const EMAILJS_TEMPLATE_ID = 'template_ywsa3t9';
 const EMAILJS_PUBLIC_KEY = 'gmBtwJOlcKZyX1xA2';
 
-const Contact = () => {
+const Contact = ({ theme }) => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [focused, setFocused] = useState(null);
     const [charging, setCharging] = useState(false);
@@ -185,14 +185,14 @@ const Contact = () => {
                                         <span className="ki-orb-mini" />
                                         <span className="ki-orb-mini" />
                                     </span>
-                                    Charging Ki...
+                                    {theme === 'editorial' ? 'Sending...' : 'Charging Ki...'}
                                 </>
                             ) : sent ? (
-                                <>⚡ Message Sent!</>
+                                <>{theme === 'editorial' ? 'Message sent!' : '⚡ Message Sent!'}</>
                             ) : (
                                 <>
                                     <span className="ki-send-icon">⚡</span>
-                                    Fire Kamehameha
+                                    {theme === 'editorial' ? 'Send message' : 'Fire Kamehameha'}
                                 </>
                             )}
                         </button>

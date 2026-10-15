@@ -272,7 +272,6 @@ const EnergyParticles = () => {
           const dz = mPos[i * 3 + 2] - mPos[j * 3 + 2];
           const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
           if (dist < threshold) {
-            const fade = 1 - dist / threshold;
             linePositions[lineIdx++] = mPos[i * 3];
             linePositions[lineIdx++] = mPos[i * 3 + 1];
             linePositions[lineIdx++] = mPos[i * 3 + 2];
