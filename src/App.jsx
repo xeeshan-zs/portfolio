@@ -20,9 +20,12 @@ const Contact = lazy(() => import('./components/Contact'));
 
 
 
+const VALID_THEMES = ['eclipse', 'editorial', 'ssblue'];
+
 function App() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('portfolio-theme-v2') || 'editorial';
+    const saved = localStorage.getItem('portfolio-theme-v3');
+    return saved && VALID_THEMES.includes(saved) ? saved : 'eclipse';
   });
   const [scouterScan, setScouterScan] = useState(false);
   const isStudioTheme = theme === 'editorial' || theme === 'eclipse';
@@ -33,7 +36,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('portfolio-theme-v2', theme);
+    localStorage.setItem('portfolio-theme-v3', theme);
   }, [theme]);
 
   useEffect(() => {

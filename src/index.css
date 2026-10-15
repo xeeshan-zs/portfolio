@@ -1,26 +1,30 @@
-/* Dragon Ball Z Theme - Default */
+/* Eclipse Theme - Default */
 :root,
-[data-theme="saiyan"] {
-  --bg-primary: #0a0a14;
-  --bg-secondary: #0f0f1e;
-  --bg-card: #111122;
+[data-theme="eclipse"] {
+  color-scheme: dark;
+  --bg-primary: #111310;
+  --bg-secondary: #191c17;
+  --bg-card: #1a1e18;
 
-  --text-primary: #f0e6d0;
-  --text-secondary: #b0a890;
-  --text-accent: #ffd700;
+  --text-primary: #f0f0e6;
+  --text-secondary: #b5b9ac;
+  --text-accent: #d5f478;
 
-  --accent-gold: #ffd700;
-  --accent-green: #39ff14;
-  --accent-blue: #00bfff;
-  --accent-orange: #ff6b35;
+  --accent-gold: #d5f478;
+  --accent-green: #d5f478;
+  --accent-blue: #b8c8e1;
+  --accent-orange: #d5f478;
 
-  --btn-primary-bg: #ffd700;
-  --btn-primary-text: #0a0a14;
+  --btn-primary-bg: #d5f478;
+  --btn-primary-text: #1a210e;
 
-  --shadow-outset: 0 0 20px rgba(255, 215, 0, 0.15), 0 0 40px rgba(255, 107, 53, 0.08);
-  --shadow-outset-sm: 0 0 10px rgba(255, 215, 0, 0.1);
-  --shadow-inset: inset 0 0 15px rgba(255, 215, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.03);
-  --shadow-hover: 0 0 30px rgba(255, 215, 0, 0.25), 0 0 60px rgba(255, 107, 53, 0.12);
+  --shadow-outset: 0 12px 32px #0002;
+  --shadow-outset-sm: 0 4px 16px #0002;
+  --shadow-inset: inset 0 1px 0 #ffffff08;
+  --shadow-hover: 0 16px 40px #0003;
+  --aura-glow: 0 6px 20px #0002;
+  --ki-blue-glow: 0 0 15px rgba(0, 191, 255, 0.3), 0 0 30px rgba(0, 191, 255, 0.15);
+  --eclipse-line: #363c30;
 
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Outfit', 'Inter', sans-serif;
@@ -32,80 +36,22 @@
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
 
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 50%;
 
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
-
-  --aura-glow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.2);
-  --ki-blue-glow: 0 0 15px rgba(0, 191, 255, 0.3), 0 0 30px rgba(0, 191, 255, 0.15);
 }
 
-/* Alternate theme: Super Saiyan God */
-[data-theme="ssgod"] {
-  --bg-primary: #0f0508;
-  --bg-secondary: #180810;
-  --bg-card: #1c0a14;
-  --text-primary: #ffe8e8;
-  --text-secondary: #c09090;
-  --accent-gold: #ff2244;
-  --accent-green: #ff4466;
-  --accent-blue: #ff3355;
-  --accent-orange: #ff1133;
-  --btn-primary-bg: #ff2244;
-  --btn-primary-text: #0f0508;
-  --shadow-outset: 0 0 20px rgba(255, 34, 68, 0.2), 0 0 40px rgba(255, 34, 68, 0.08);
-  --shadow-outset-sm: 0 0 10px rgba(255, 34, 68, 0.12);
-  --shadow-inset: inset 0 0 15px rgba(255, 34, 68, 0.06);
-  --shadow-hover: 0 0 30px rgba(255, 34, 68, 0.3), 0 0 60px rgba(255, 34, 68, 0.12);
-  --aura-glow: 0 0 20px rgba(255, 34, 68, 0.5), 0 0 40px rgba(255, 34, 68, 0.25);
-}
+.eclipse-loading { min-height: 850px !important; }
 
-/* Alternate theme: Namek */
-[data-theme="namek"] {
-  --bg-primary: #0a1a0a;
-  --bg-secondary: #0f250f;
-  --bg-card: #112a11;
-  --text-primary: #e0f0e0;
-  --text-secondary: #90b090;
-  --accent-gold: #64ffda;
-  --accent-green: #39ff14;
-  --accent-blue: #64ffda;
-  --btn-primary-bg: #64ffda;
-  --btn-primary-text: #0a1a0a;
-  --shadow-outset: 0 0 20px rgba(100, 255, 218, 0.15);
-  --shadow-outset-sm: 0 0 10px rgba(100, 255, 218, 0.1);
-  --shadow-inset: inset 0 0 15px rgba(100, 255, 218, 0.05);
-  --shadow-hover: 0 0 30px rgba(100, 255, 218, 0.25);
-  --aura-glow: 0 0 20px rgba(100, 255, 218, 0.4);
-}
-
-/* Alternate theme: Ultra Instinct */
-[data-theme="ultra"] {
-  --bg-primary: #0a0a1a;
-  --bg-secondary: #0f0f28;
-  --bg-card: #141435;
-  --text-primary: #e8e8f8;
-  --text-secondary: #9090c0;
-  --accent-gold: #c084fc;
-  --accent-green: #a78bfa;
-  --accent-blue: #818cf8;
-  --btn-primary-bg: #818cf8;
-  --btn-primary-text: #0a0a1a;
-  --shadow-outset: 0 0 20px rgba(129, 140, 248, 0.15);
-  --shadow-outset-sm: 0 0 10px rgba(129, 140, 248, 0.1);
-  --shadow-inset: inset 0 0 15px rgba(129, 140, 248, 0.05);
-  --shadow-hover: 0 0 30px rgba(129, 140, 248, 0.25);
-  --aura-glow: 0 0 20px rgba(129, 140, 248, 0.4);
-}
-
-/* Alternate theme: Super Saiyan Blue */
+/* Super Saiyan Blue Theme */
 [data-theme="ssblue"] {
+  color-scheme: dark;
   --bg-primary: #030a16;
   --bg-secondary: #061224;
   --bg-card: #081a30;
@@ -123,73 +69,12 @@
   --shadow-inset: inset 0 0 15px rgba(0, 204, 255, 0.06);
   --shadow-hover: 0 0 30px rgba(0, 204, 255, 0.3), 0 0 60px rgba(0, 170, 255, 0.12);
   --aura-glow: 0 0 20px rgba(0, 204, 255, 0.5), 0 0 40px rgba(0, 170, 255, 0.25);
+  --ki-blue-glow: 0 0 15px rgba(0, 191, 255, 0.3), 0 0 30px rgba(0, 191, 255, 0.15);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
 }
-
-/* Alternate theme: Ultra Ego */
-[data-theme="ego"] {
-  --bg-primary: #0f0508;
-  --bg-secondary: #1a0a10;
-  --bg-card: #200e15;
-  --text-primary: #f0d0e0;
-  --text-secondary: #b080a0;
-  --accent-gold: #ff69b4;
-  --accent-green: #ff1493;
-  --accent-blue: #ff69b4;
-  --btn-primary-bg: #ff69b4;
-  --btn-primary-text: #0f0508;
-  --shadow-outset: 0 0 20px rgba(255, 105, 180, 0.15);
-  --shadow-outset-sm: 0 0 10px rgba(255, 105, 180, 0.1);
-  --shadow-inset: inset 0 0 15px rgba(255, 105, 180, 0.05);
-  --shadow-hover: 0 0 30px rgba(255, 105, 180, 0.25);
-  --aura-glow: 0 0 20px rgba(255, 105, 180, 0.4);
-}
-
-/* Alternate theme: Fusion */
-[data-theme="fusion"] {
-  --bg-primary: #0a100a;
-  --bg-secondary: #0f1a0f;
-  --bg-card: #142014;
-  --text-primary: #e0f8e0;
-  --text-secondary: #80c080;
-  --accent-gold: #39ff14;
-  --accent-green: #39ff14;
-  --accent-blue: #00ff88;
-  --btn-primary-bg: #39ff14;
-  --btn-primary-text: #0a100a;
-  --shadow-outset: 0 0 20px rgba(57, 255, 20, 0.15);
-  --shadow-outset-sm: 0 0 10px rgba(57, 255, 20, 0.1);
-  --shadow-inset: inset 0 0 15px rgba(57, 255, 20, 0.05);
-  --shadow-hover: 0 0 30px rgba(57, 255, 20, 0.25);
-  --aura-glow: 0 0 20px rgba(57, 255, 20, 0.4);
-}
-
-/* Keep Eclipse's palette available before its on-demand presentation loads. */
-[data-theme="eclipse"] {
-  color-scheme: dark;
-  --bg-primary: #111310;
-  --bg-secondary: #191c17;
-  --bg-card: #1a1e18;
-  --text-primary: #f0f0e6;
-  --text-secondary: #b5b9ac;
-  --text-accent: #d5f478;
-  --accent-gold: #d5f478;
-  --accent-green: #d5f478;
-  --accent-blue: #b8c8e1;
-  --accent-orange: #d5f478;
-  --btn-primary-bg: #d5f478;
-  --btn-primary-text: #1a210e;
-  --shadow-outset: 0 12px 32px #0002;
-  --shadow-outset-sm: 0 4px 16px #0002;
-  --shadow-inset: inset 0 1px 0 #ffffff08;
-  --shadow-hover: 0 16px 40px #0003;
-  --aura-glow: 0 6px 20px #0002;
-  --eclipse-line: #363c30;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-}
-.eclipse-loading { min-height: 850px !important; }
 
 * {
   margin: 0;

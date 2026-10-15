@@ -2,16 +2,10 @@ import { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 
 const THEME_COLORS = {
-  saiyan:   { ball: 0xff8c00, glow: 0xffd700, star: 0xcc0000, light: 0xffd700, rim: 0xff6600, particle: [1, 0.8, 0.2] },
-  ssgod:    { ball: 0xcc1133, glow: 0xff2244, star: 0xff6688, light: 0xff3355, rim: 0xaa0022, particle: [1, 0.2, 0.3] },
   ssblue:   { ball: 0x0066cc, glow: 0x00ccff, star: 0x003366, light: 0x00ccff, rim: 0x0044aa, particle: [0.1, 0.7, 1] },
-  ultra:    { ball: 0x5533cc, glow: 0x818cf8, star: 0x3322aa, light: 0x818cf8, rim: 0x4422cc, particle: [0.5, 0.5, 1] },
-  ego:      { ball: 0xcc2288, glow: 0xff69b4, star: 0xff88cc, light: 0xff69b4, rim: 0xaa1166, particle: [1, 0.3, 0.7] },
-  namek:    { ball: 0x008866, glow: 0x64ffda, star: 0x004433, light: 0x64ffda, rim: 0x006644, particle: [0.3, 1, 0.8] },
-  fusion:   { ball: 0x22aa00, glow: 0x39ff14, star: 0x115500, light: 0x39ff14, rim: 0x118800, particle: [0.2, 1, 0.1] },
 };
 
-const DragonBall = ({ theme = 'saiyan' }) => {
+const DragonBall = ({ theme = 'ssblue' }) => {
   const mountRef = useRef(null);
   const sceneRef = useRef({});
 
@@ -20,7 +14,7 @@ const DragonBall = ({ theme = 'saiyan' }) => {
     if (!container) return;
 
     const { clientWidth, clientHeight } = container;
-    const tc = THEME_COLORS[theme] || THEME_COLORS.saiyan;
+    const tc = THEME_COLORS[theme] || THEME_COLORS.ssblue;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, clientWidth / clientHeight, 0.1, 1000);

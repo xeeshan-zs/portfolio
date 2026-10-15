@@ -3,15 +3,9 @@ import { Sparkles, X } from 'lucide-react';
 import './ThemeToggle.css';
 
 const themes = [
-    { id: 'editorial', label: 'Anime Editorial', color: '#b53d35', desc: 'Professional · ink & paper' },
     { id: 'eclipse', label: 'Eclipse', color: '#d5f478', desc: 'Sculptural · interactive 3D' },
-    { id: 'saiyan', label: 'Super Saiyan', color: '#ffd700', desc: 'Legendary Power' },
-    { id: 'ssgod', label: 'SS God', color: '#ff2244', desc: 'Divine Ki' },
+    { id: 'editorial', label: 'Anime Editorial', color: '#b53d35', desc: 'Professional · ink & paper' },
     { id: 'ssblue', label: 'SS Blue', color: '#00ccff', desc: 'Godly Energy' },
-    { id: 'ultra', label: 'Ultra Instinct', color: '#818cf8', desc: 'Autonomous' },
-    { id: 'ego', label: 'Ultra Ego', color: '#ff69b4', desc: 'Destruction' },
-    { id: 'namek', label: 'Namek', color: '#64ffda', desc: 'DBZ Classic' },
-    { id: 'fusion', label: 'Fusion', color: '#39ff14', desc: 'Fused Power' },
 ];
 
 const ThemeToggle = ({ theme, setTheme }) => {
