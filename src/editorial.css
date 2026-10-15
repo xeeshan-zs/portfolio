@@ -212,12 +212,13 @@
 [data-theme="editorial"] .footer-bottom { border-color: #c8c5bc; }
 
 /* Theme picker is itself readable in both this light theme and dark alternatives. */
-[data-theme="editorial"] .theme-toggle { border-radius: 8px; background: #fffdf8; color: #a93630; border-color: #c8c5bc; box-shadow: 0 5px 16px rgba(32,37,37,.1); }
-[data-theme="editorial"] .theme-toggle::before { display: none; }
+[data-theme="editorial"] .theme-toggle { border-radius: 18px; background: #fffdf8; color: #a93630; border-color: #c8c5bc; box-shadow: 0 5px 16px rgba(32,37,37,.1); }
 [data-theme="editorial"] .theme-toggle:hover { background: #f1e4dc; transform: translateY(-2px); box-shadow: 0 9px 20px rgba(32,37,37,.12); }
+[data-theme="editorial"] .theme-toggle-mark { color: #fffdf8; }
 [data-theme="editorial"] .theme-panel { background: #fffdf8; border-color: #c8c5bc; box-shadow: 0 20px 50px rgba(32,37,37,.2); }
 [data-theme="editorial"] .theme-panel-header { border-color: #ded8ce; }
 [data-theme="editorial"] .theme-panel-title { color: #202525; text-shadow: none; letter-spacing: .08em; text-transform: uppercase; }
+[data-theme="editorial"] .theme-panel-subtitle { color: #626963; }
 [data-theme="editorial"] .theme-panel-close { background: #f3eee5; color: #202525; }
 [data-theme="editorial"] .theme-card:hover,
 [data-theme="editorial"] .theme-card.active { background: #f3eee5; }

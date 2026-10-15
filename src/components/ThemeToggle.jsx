@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sparkles, X } from 'lucide-react';
+import { Palette, X } from 'lucide-react';
 import './ThemeToggle.css';
 
 const themes = [
@@ -10,6 +10,7 @@ const themes = [
 
 const ThemeToggle = ({ theme, setTheme }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const currentTheme = themes.find((item) => item.id === theme) || themes[0];
 
     return (
         <>
@@ -18,7 +19,10 @@ const ThemeToggle = ({ theme, setTheme }) => {
                 {isOpen && (
                     <div className="theme-panel">
                         <div className="theme-panel-header">
-                            <span className="theme-panel-title">Choose a theme</span>
+                            <div className="theme-panel-heading">
+                                <span className="theme-panel-title">Visual modes</span>
+                                <span className="theme-panel-subtitle">Choose your portfolio atmosphere</span>
+                            </div>
                             <button className="theme-panel-close" onClick={() => setIsOpen(false)} aria-label="Close theme menu">
                                 <X size={16} />
                             </button>
@@ -31,27 +35,30 @@ const ThemeToggle = ({ theme, setTheme }) => {
                                     onClick={() => { setTheme(t.id); setIsOpen(false); }}
                                     aria-label={`${t.label}: ${t.desc}`}
                                     aria-pressed={theme === t.id}
+                                    style={{ '--theme-swatch': t.color }}
                                 >
-                                    <div className="theme-card-orb" style={{
-                                        background: `radial-gradient(circle at 35% 35%, ${t.color}dd, ${t.color}44)`,
-                                        boxShadow: `0 0 20px ${t.color}66, inset 0 0 10px ${t.color}33`,
-                                    }}>
+                                    <div className="theme-card-orb">
                                         {theme === t.id && <span className="theme-card-check">✓</span>}
                                     </div>
-                                    <span className="theme-card-name">{t.label}</span>
-                                    <span className="theme-card-desc">{t.desc}</span>
+                                    <span className="theme-card-copy">
+                                        <span className="theme-card-name">{t.label}</span>
+                                        <span className="theme-card-desc">{t.desc}</span>
+                                    </span>
+                                    <span className="theme-card-status">{theme === t.id ? 'Active' : 'Select'}</span>
                                 </button>
                             ))}
                         </div>
                     </div>
                 )}
                 <button
-                    className="theme-toggle"
+                    className={`theme-toggle${isOpen ? ' is-open' : ''}`}
                     onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Change theme"
+                    aria-label={`Change theme. Current theme: ${currentTheme.label}`}
                     aria-expanded={isOpen}
+                    title={`Theme: ${currentTheme.label}`}
+                    style={{ '--theme-swatch': currentTheme.color }}
                 >
-                    <Sparkles size={20} />
+                    <span className="theme-toggle-mark" aria-hidden="true"><Palette size={16} /></span>
                 </button>
             </div>
         </>
