@@ -5,7 +5,7 @@ import './ThemeToggle.css';
 const themes = [
     { id: 'eclipse', label: 'Eclipse', color: '#d5f478', desc: 'Sculptural · interactive 3D' },
     { id: 'editorial', label: 'Anime Editorial', color: '#b53d35', desc: 'Professional · ink & paper' },
-    { id: 'ssblue', label: 'SS Blue', color: '#00ccff', desc: 'Godly Energy' },
+    { id: 'ssblue', label: 'SS Blue Goku', color: '#00ccff', desc: 'Dragon Ball · Godly Ki' },
 ];
 
 const ThemeToggle = ({ theme, setTheme }) => {
